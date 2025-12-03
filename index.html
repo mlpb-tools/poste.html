@@ -3,3518 +3,783 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guidebook Life Skills – Mission Locale × LS4YOU</title>
+  <title>Guide Pédagogique LS4YOU</title>
   <script src="/_sdk/element_sdk.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
-        body {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: #ffffff;
-            color: #333;
-            line-height: 1.6;
-            height: 100%;
-        }
-
-        html {
-            height: 100%;
-        }
-
-        .guidebook-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100%;
-        }
-
-        /* Navigation */
-        .nav-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            background: linear-gradient(135deg, #ff4757, #ff6b7a);
-            padding: 10px 20px;
-            gap: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-logo {
-            height: 50px;
-            margin-right: 15px;
-            background: white;
-            padding: 5px 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .nav-tab {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 25px;
-            color: white;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .nav-tab:hover, .nav-tab.active {
-            background: white;
-            color: #ff4757;
-            transform: translateY(-2px);
-        }
-
-        /* Pages */
-        .page {
-            display: none;
-            padding: 40px;
-            min-height: calc(100% - 120px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Éléments décoratifs */
-        .circle-decoration {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.15;
-            z-index: 1;
-        }
-
-        .circle-turquoise {
-            background: #00d2d3;
-            width: 150px;
-            height: 150px;
-            top: 20%;
-            left: -75px;
-        }
-
-        .circle-yellow {
-            background: #feca57;
-            width: 200px;
-            height: 200px;
-            bottom: 10%;
-            right: -100px;
-        }
-
-        .circle-mint {
-            background: #7bed9f;
-            width: 100px;
-            height: 100px;
-            top: 60%;
-            left: 10%;
-        }
-
-        /* Typographies */
-        .title-main {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 900;
-            font-size: 3.5rem;
-            color: #ff4757;
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .title-section {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            font-size: 2.5rem;
-            color: #ff4757;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 10;
-            text-align: center;
-        }
-
-        .subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            font-size: 1.3rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Encadrés colorés */
-        .info-box {
-            padding: 25px;
-            border-radius: 20px;
-            margin: 20px 0;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .box-turquoise {
-            background: linear-gradient(135deg, #00d2d3, #7bed9f);
-            color: white;
-        }
-
-        .box-orange {
-            background: linear-gradient(135deg, #ff9f43, #feca57);
-            color: #333;
-        }
-
-        /* Portrait circulaire */
-        .portrait-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d2d3, #7bed9f);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            position: relative;
-            z-index: 10;
-            font-size: 4rem;
-            color: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        /* Mini-parcours */
-        .mini-course {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-            border-top: 8px solid #ff4757;
-        }
-
-        .course-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .course-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff4757, #ff6b7a);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .course-title {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: #ff4757;
-        }
-
-        .course-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .course-content h4 {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-            color: #333;
-            margin: 20px 0 10px 0;
-        }
-
-        .course-content ul {
-            margin: 10px 0;
-            padding-left: 25px;
-        }
-
-        .course-content li {
-            margin: 8px 0;
-            color: #555;
-        }
-
-        /* Infographie Journey */
-        .journey-infographic {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-        }
-
-        .journey-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .journey-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .journey-header h3 {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            color: #ff4757;
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .journey-flow {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .journey-step {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-        }
-
-        .step-visual {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .step-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            position: relative;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .step-number {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .step-emoji {
-            font-size: 2.5rem;
-        }
-
-        .step-title {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .step-subtitle {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .step-details {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .detail-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .detail-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-icon {
-            font-size: 1.5rem;
-            width: 40px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .card-content strong {
-            display: block;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .card-content p {
-            margin: 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .journey-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 10px;
-            flex-shrink: 0;
-        }
-
-        .arrow-svg {
-            width: 80px;
-            height: 50px;
-        }
-
-        /* Bubbles / Badges */
-        .bubble-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
-        .bubble {
-            background: white;
-            border: 3px solid #00d2d3;
-            border-radius: 25px;
-            padding: 12px 24px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-            color: #00d2d3;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(0,210,211,0.2);
-        }
-
-        .bubble:nth-child(2) { border-color: #feca57; color: #feca57; }
-        .bubble:nth-child(3) { border-color: #ff4757; color: #ff4757; }
-        .bubble:nth-child(4) { border-color: #7bed9f; color: #7bed9f; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page {
-                padding: 20px;
-            }
-            
-            .title-main {
-                font-size: 2.5rem;
-            }
-            
-            .title-section {
-                font-size: 2rem;
-            }
-            
-            .nav-tabs {
-                padding: 10px;
-            }
-
-            .journey-flow {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .journey-arrow {
-                transform: rotate(90deg);
-                margin: 20px 0;
-            }
-
-            .course-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .course-number {
-                margin: 0 0 15px 0;
-            }
-        }
-    </style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #ffffff;
+      overflow-x: hidden;
+      height: 100%;
+    }
+    
+    html {
+      height: 100%;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .main-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    
+    /* Header */
+    .header {
+      background: #ffffff;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: #FFD42A;
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 100px;
+      width: 120px;
+      height: 120px;
+      background: #00BFB3;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+    
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .logo-section img {
+      max-height: 50px;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background: #ffffff;
+      padding: 12px 20px;
+      gap: 8px;
+      border-bottom: 4px solid #FFD42A;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      justify-content: center;
+    }
+    
+    .tab-btn {
+      padding: 14px 20px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      color: #666;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .tab-btn:hover {
+      color: #D81E5B;
+      background: rgba(255, 212, 42, 0.15);
+      border-color: #FFD42A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tab-btn.active {
+      color: white;
+      background: linear-gradient(135deg, #D81E5B 0%, #E63462 100%);
+      border-color: #D81E5B;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(216, 30, 91, 0.3);
+    }
+    
+    /* Content Area */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 30px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Section Title */
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      font-family: 'Fredoka', sans-serif;
+      margin-bottom: 16px;
+      color: #D81E5B;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 6px;
+      background: #FFD42A;
+      border-radius: 3px;
+    }
+    
+    .section-subtitle {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 40px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+    }
+    
+    .intro-section {
+      background: linear-gradient(135deg, rgba(243, 146, 0, 0.1) 0%, rgba(243, 146, 0, 0.02) 100%);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      border: 3px solid #f39200;
+      box-shadow: 0 4px 20px rgba(243, 146, 0, 0.1);
+    }
+    
+    .intro-section h3 {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: 'Fredoka', sans-serif;
+      color: #f39200;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .intro-section p {
+      font-size: 15px;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    
+    /* Card Game Styles */
+    .axis-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    
+    .axis-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
+    }
+    
+    .skill-card {
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 6px solid;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .skill-card.flipped {
+      background: linear-gradient(135deg, rgba(243, 146, 0, 0.05) 0%, rgba(243, 146, 0, 0.01) 100%);
+    }
+    
+    .skill-card-front, .skill-card-back {
+      display: none;
+    }
+    
+    .skill-card-front.active, .skill-card-back.active {
+      display: block;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 16px 16px;
+      }
+      
+      .logo-section {
+        gap: 12px;
+      }
+      
+      .logo-section img {
+        max-height: 40px;
+      }
+      
+      .content {
+        padding: 20px 16px;
+      }
+      
+      .nav-tabs {
+        padding: 10px;
+        gap: 6px;
+      }
+      
+      .tab-btn {
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .intro-section {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .tab-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+      }
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
-  <div class="guidebook-container"><!-- Navigation -->
-   <nav class="nav-tabs"><img src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_224,h_60,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif" alt="Mission Locale Pays Basque" class="nav-logo" onerror="this.style.display='none';"> <button class="nav-tab active" onclick="showPage('cover')">🏠 Accueil</button> <button class="nav-tab" onclick="showPage('guide-conseiller')">👨‍🏫 Guide Conseiller</button> <button class="nav-tab" onclick="showPage('diagnostic')">📋 Diagnostic</button> <button class="nav-tab" onclick="showPage('matrice')">🔗 Matrice</button> <button class="nav-tab" onclick="showPage('emploi')">💼 Emploi</button> <button class="nav-tab" onclick="showPage('formation')">🎓 Formation</button> <button class="nav-tab" onclick="showPage('orientation')">🧭 Orientation</button> <button class="nav-tab" onclick="showPage('mobilite')">🚗 Mobilité</button> <button class="nav-tab" onclick="showPage('sante')">💚 Santé</button> <button class="nav-tab" onclick="showPage('logement')">🏠 Logement</button> <button class="nav-tab" onclick="showPage('citoyennete')">🤝 Citoyenneté</button> <button class="nav-tab" onclick="showPage('finances')">💰 Finances</button> <button class="nav-tab" onclick="showPage('loisirs')">🎨 Loisirs</button> <button class="nav-tab" onclick="showPage('numerique')">📱 Numérique</button>
-   </nav><!-- PAGE COUVERTURE -->
-   <div id="cover" class="page active">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <div class="circle-decoration circle-mint"></div><!-- Logo LS4YOU en haut à gauche -->
-    <div style="position: absolute; top: 20px; left: 20px; z-index: 20;"><img src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/LS4YOU_Logo.png" alt="LS4YOU Logo" style="max-width: 180px; height: auto;" onerror="this.style.display='none';">
+  <div class="main-container"><!-- Header -->
+   <header class="header" role="banner">
+    <div class="logo-section"><img src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_224,h_60,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif" alt="Logo Mission Locale Pays Basque" onerror="this.style.display='none'; this.alt='MLPB';">
+     <div style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #D81E5B; margin: 0 12px;">
+      ×
+     </div><img src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/LS4YOU_Logo.png" alt="Logo LS4YOU" onerror="this.style.display='none'; this.alt='LS4YOU';">
     </div>
-    <h1 class="title-main" id="main-title">Guidebook Life Skills</h1>
-    <p class="subtitle" id="subtitle-text">Mission Locale × LS4YOU</p>
-    <div class="portrait-circle">
-     🎯
-    </div>
-    <p class="subtitle" style="margin-top: 40px;">Développer les compétences de vie pour l'insertion des jeunes</p>
-    <div class="bubble-container">
-     <div class="bubble">
-      Simple
+   </header><!-- Navigation Tabs -->
+   <nav class="nav-tabs" role="navigation" aria-label="Navigation principale"><button class="tab-btn active" data-tab="accueil" role="tab" aria-selected="true">🏠 Accueil</button> <button class="tab-btn" data-tab="axes" role="tab" aria-selected="false">1. Compétences</button> <button class="tab-btn" data-tab="diagnostic" role="tab" aria-selected="false">2. Auto positionnement</button> <button class="tab-btn" data-tab="parcours" role="tab" aria-selected="false">3. Micro parcours thématiques</button> <button class="tab-btn" data-tab="suivi" role="tab" aria-selected="false">4. Ateliers collectifs</button>
+   </nav><!-- Content Area -->
+   <main class="content"><!-- ACCUEIL -->
+    <div class="tab-content active" id="accueil">
+     <h2 class="section-title">🏠 Bienvenue dans le Guide Pédagogique LS4YOU</h2>
+     <p class="section-subtitle">Un outil pour accompagner les jeunes dans le développement de leurs compétences de vie</p>
+     <div class="intro-section">
+      <h3>🎯 À quoi sert ce guide ?</h3>
+      <p>Ce guide pédagogique vous aide à <strong>structurer l'accompagnement</strong> des jeunes en Mission Locale en utilisant l'approche <strong>Life Skills</strong> (compétences psychosociales).<br><br>
+        Il propose une <strong>grille de lecture</strong> des situations des jeunes, un <strong>catalogue d'activités</strong> testées et des <strong>outils de suivi</strong> pour mesurer les progrès.</p>
      </div>
-     <div class="bubble">
-      Concret
-     </div>
-     <div class="bubble">
-      Actionnable
-     </div>
-     <div class="bubble">
-      Efficace
-     </div>
-    </div>
-    <div class="info-box box-turquoise" style="margin-top: 60px;">
-     <p style="text-align: center; font-size: 1.1rem; margin: 0;" id="organization-text"><strong>Mission Locale × LS4YOU</strong><br>
-       Un outil pratique pour les conseillers et les jeunes en insertion</p>
-    </div><!-- Logo EU en bas à droite -->
-    <div style="position: absolute; bottom: 20px; right: 20px; z-index: 20;"><img src="https://www.lifeskills4youth.eu/wp-content/uploads/2024/07/copyright_eu_en.png" alt="EU Copyright" style="max-width: 200px; height: auto;" onerror="this.style.display='none';">
-    </div>
-   </div><!-- PAGE GUIDE CONSEILLER -->
-   <div id="guide-conseiller" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">👨‍🏫 Guide du Conseiller</h2>
-    <p class="subtitle">Votre ressource complète pour accompagner les jeunes avec les Life Skills</p>
-    <div class="info-box box-turquoise" style="margin-bottom: 30px;">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎯 À propos du Guide Conseiller</h4>
-     <p style="margin-bottom: 15px;">Le Guide du Conseiller est un outil complet conçu spécifiquement pour vous, professionnels de l'insertion. Il vous accompagne dans la mise en œuvre de l'approche Life Skills au quotidien.</p>
-     <ul style="margin: 10px 0; padding-left: 25px;">
-      <li><strong>Méthodes pédagogiques</strong> : Comment animer un atelier Life Skills</li>
-      <li><strong>Fiches pratiques</strong> : Activités clés en main pour chaque domaine</li>
-      <li><strong>Outils d'évaluation</strong> : Mesurer la progression des jeunes</li>
-      <li><strong>Cas pratiques</strong> : Exemples concrets et retours d'expérience</li>
-      <li><strong>Ressources complémentaires</strong> : Liens, références, supports</li>
-     </ul>
-    </div>
-    <div class="journey-infographic" style="margin-top: 30px;">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🗺️
-      </div>
-      <h3>Les 4 Piliers du Guide Conseiller</h3>
-     </div>
-     <div class="journey-flow"><!-- Pilier 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          📚
-         </div>
+     <div style="background: linear-gradient(135deg, rgba(243, 146, 0, 0.1) 0%, rgba(243, 146, 0, 0.02) 100%); padding: 45px; border-radius: 20px; margin-bottom: 40px; border: 3px solid #f39200;">
+      <h3 style="font-size: 32px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #f39200; margin-bottom: 32px; text-align: center;">🗺️ Le Parcours LS4YOU en 4 Étapes</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;"><!-- Étape 1 -->
+       <div style="background: white; padding: 28px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #D81E5B; text-align: center; transition: transform 0.3s ease;">
+        <div style="font-size: 56px; margin-bottom: 16px;">
+         🧭
         </div>
-        <div class="step-title">
-         Comprendre
+        <h4 style="font-size: 22px; font-weight: 700; color: #D81E5B; margin-bottom: 12px; font-family: 'Fredoka', sans-serif;">1. JE DÉCOUVRE</h4>
+        <p style="font-size: 13px; color: #666; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">LS4YOU – Parcours &amp; Compétences</p>
+        <p style="font-size: 15px; color: #333; line-height: 1.6; margin: 0;"><strong>Objectif :</strong> Comprendre de quoi on parle</p>
+       </div><!-- Étape 2 -->
+       <div style="background: white; padding: 28px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #FFD42A; text-align: center; transition: transform 0.3s ease;">
+        <div style="font-size: 56px; margin-bottom: 16px;">
+         🎯
         </div>
-        <div class="step-subtitle">
-         Le cadre Life Skills
+        <h4 style="font-size: 22px; font-weight: 700; color: #E6A800; margin-bottom: 12px; font-family: 'Fredoka', sans-serif;">2. JE ME SITUE</h4>
+        <p style="font-size: 13px; color: #666; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">DIAG4U – Auto-positionnement</p>
+        <p style="font-size: 15px; color: #333; line-height: 1.6; margin: 0;"><strong>Objectif :</strong> Savoir où j'en suis aujourd'hui</p>
+       </div><!-- Étape 3 -->
+       <div style="background: white; padding: 28px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #00BFB3; text-align: center; transition: transform 0.3s ease;">
+        <div style="font-size: 56px; margin-bottom: 16px;">
+         🧩
         </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🧠
-         </div>
-         <div class="card-content"><strong>Fondamentaux</strong>
-          <p>Qu'est-ce qu'une Life Skill ? Pourquoi c'est important ?</p>
-         </div>
+        <h4 style="font-size: 22px; font-weight: 700; color: #00BFB3; margin-bottom: 12px; font-family: 'Fredoka', sans-serif;">3. JE M'APPROPRIE</h4>
+        <p style="font-size: 13px; color: #666; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Mini-Parcours – Micro-activités</p>
+        <p style="font-size: 15px; color: #333; line-height: 1.6; margin: 0;"><strong>Objectif :</strong> Comprendre comment ça me concerne</p>
+       </div><!-- Étape 4 -->
+       <div style="background: white; padding: 28px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #A7E8BD; text-align: center; transition: transform 0.3s ease;">
+        <div style="font-size: 56px; margin-bottom: 16px;">
+         🧑‍🤝‍🧑
         </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Approche</strong>
-          <p>Pédagogie active, apprentissage par l'action</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🔗
-         </div>
-         <div class="card-content"><strong>Connexions</strong>
-          <p>Comment les Life Skills impactent l'insertion</p>
-         </div>
-        </div>
+        <h4 style="font-size: 22px; font-weight: 700; color: #5DB87D; margin-bottom: 12px; font-family: 'Fredoka', sans-serif;">4. JE PRATIQUE</h4>
+        <p style="font-size: 13px; color: #666; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Ateliers collectifs Mission Locale</p>
+        <p style="font-size: 15px; color: #333; line-height: 1.6; margin: 0;"><strong>Objectif :</strong> Mettre en pratique avec d'autres</p>
        </div>
       </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Pilier 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🎬
-         </div>
+     </div>
+     <div style="background: linear-gradient(135deg, rgba(167, 232, 189, 0.15) 0%, rgba(167, 232, 189, 0.03) 100%); padding: 45px; border-radius: 20px; border: 3px solid #A7E8BD;">
+      <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #5DB87D; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">💡 Principes clés de l'accompagnement Life Skills</h3>
+      <div style="font-size: 16px; color: #333; line-height: 1.8;">
+       <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #5DB87D; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Approche globale :</strong> Le jeune n'est pas seulement "sans CV" - il traverse des domaines de vie complexes</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #5DB87D; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Pas de notation :</strong> Les Life Skills ne sont pas des cases à cocher, mais des capacités en construction</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #5DB87D; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Progressivité :</strong> On travaille 1-2 axes prioritaires à la fois, sans surcharge</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #5DB87D; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Valorisation :</strong> Célébrer les petits progrès avant de viser de grands changements</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px;"><span style="color: #5DB87D; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Participation active :</strong> Le jeune est acteur de son diagnostic et de son parcours</span></li>
+       </ul>
+      </div>
+     </div>
+    </div><!-- 4 AXES -->
+    <div class="tab-content" id="axes">
+     <h2 class="section-title">✨ Les 4 Axes Life Skills</h2>
+     <p class="section-subtitle">Découvre les compétences psychosociales à travers un jeu de cartes interactif</p>
+     <div style="background: linear-gradient(135deg, rgba(0, 191, 179, 0.1) 0%, rgba(0, 191, 179, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #00BFB3; box-shadow: 0 4px 20px rgba(0, 191, 179, 0.1); margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #00BFB3; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">🔧 Outil Interactif : Découvrir les 4 Axes</h3>
+      <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 20px;">Explorez les 4 axes Life Skills de manière interactive et découvrez en détail chaque compétence psychosociale avec notre outil dédié.</p>
+      <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;"><a href="https://mlpb-tools.github.io/4Axes4U" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #00BFB3 0%, #26D4C7 100%); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(0, 191, 179, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;"> 🚀 Accéder à l'outil des 4 Axes </a>
+       <p style="font-size: 14px; color: #666; margin-top: 16px; margin-bottom: 0;">L'outil s'ouvrira dans un nouvel onglet</p>
+      </div>
+     </div>
+     <div style="background: linear-gradient(135deg, rgba(255, 212, 42, 0.1) 0%, rgba(255, 212, 42, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #FFD42A; box-shadow: 0 4px 20px rgba(255, 212, 42, 0.1); margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #E6A800; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">🎮 Jeu de Classement : Découvre les Life Skills</h3>
+      <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 20px;">Avant de passer au diagnostic, amuse-toi à classer des situations et mots-clés dans les 4 axes Life Skills ! Chaque carte te donne une définition pour mieux comprendre la compétence.</p>
+      <div id="card-game-container" style="margin-top: 32px;"><!-- Instructions -->
+       <div style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h4 style="font-size: 18px; font-weight: 700; color: #333; margin-bottom: 12px; font-family: 'Fredoka', sans-serif;">📖 Comment jouer ?</h4>
+        <p style="font-size: 14px; color: #555; line-height: 1.6; margin: 0;"><strong>1.</strong> Clique sur une carte pour voir sa définition<br><strong>2.</strong> Glisse-la dans l'axe Life Skills correspondant<br><strong>3.</strong> Continue jusqu'à classer toutes les cartes !</p>
+       </div><!-- Score -->
+       <div style="text-align: center; margin-bottom: 24px;">
+        <div style="display: inline-block; background: white; padding: 16px 32px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);"><span style="font-size: 16px; color: #666; font-weight: 600;">Score : </span> <span id="score" style="font-size: 24px; color: #f39200; font-weight: 700; font-family: 'Fredoka', sans-serif;">0</span> <span style="font-size: 16px; color: #666; font-weight: 600;"> / 50</span>
         </div>
-        <div class="step-title">
-         Animer
+       </div><!-- Zones de dépôt (4 axes) -->
+       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        <div class="drop-zone" data-axis="1" style="background: linear-gradient(135deg, rgba(216, 30, 91, 0.1) 0%, rgba(216, 30, 91, 0.02) 100%); border: 3px dashed #D81E5B; padding: 20px; border-radius: 16px; min-height: 200px; transition: all 0.3s ease;">
+         <h4 style="font-size: 18px; font-weight: 700; color: #D81E5B; font-family: 'Fredoka', sans-serif; margin-bottom: 12px; text-align: center;">🧠 Personnalité</h4>
+         <div class="dropped-cards" style="display: flex; flex-direction: column; gap: 8px;"></div>
         </div>
-        <div class="step-subtitle">
-         Des ateliers efficaces
+        <div class="drop-zone" data-axis="2" style="background: linear-gradient(135deg, rgba(255, 212, 42, 0.1) 0%, rgba(255, 212, 42, 0.02) 100%); border: 3px dashed #FFD42A; padding: 20px; border-radius: 16px; min-height: 200px; transition: all 0.3s ease;">
+         <h4 style="font-size: 18px; font-weight: 700; color: #E6A800; font-family: 'Fredoka', sans-serif; margin-bottom: 12px; text-align: center;">�� Valorisation</h4>
+         <div class="dropped-cards" style="display: flex; flex-direction: column; gap: 8px;"></div>
         </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📝
-         </div>
-         <div class="card-content"><strong>Préparation</strong>
-          <p>Structurer un atelier, timing, matériel</p>
-         </div>
+        <div class="drop-zone" data-axis="3" style="background: linear-gradient(135deg, rgba(0, 191, 179, 0.1) 0%, rgba(0, 191, 179, 0.02) 100%); border: 3px dashed #00BFB3; padding: 20px; border-radius: 16px; min-height: 200px; transition: all 0.3s ease;">
+         <h4 style="font-size: 18px; font-weight: 700; color: #00BFB3; font-family: 'Fredoka', sans-serif; margin-bottom: 12px; text-align: center;">🤝 Bien-être</h4>
+         <div class="dropped-cards" style="display: flex; flex-direction: column; gap: 8px;"></div>
         </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎭
-         </div>
-         <div class="card-content"><strong>Animation</strong>
-          <p>Techniques d'engagement et de facilitation</p>
-         </div>
+        <div class="drop-zone" data-axis="4" style="background: linear-gradient(135deg, rgba(167, 232, 189, 0.1) 0%, rgba(167, 232, 189, 0.02) 100%); border: 3px dashed #A7E8BD; padding: 20px; border-radius: 16px; min-height: 200px; transition: all 0.3s ease;">
+         <h4 style="font-size: 18px; font-weight: 700; color: #5DB87D; font-family: 'Fredoka', sans-serif; margin-bottom: 12px; text-align: center;">��� Ressources</h4>
+         <div class="dropped-cards" style="display: flex; flex-direction: column; gap: 8px;"></div>
         </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💬
-         </div>
-         <div class="card-content"><strong>Debriefing</strong>
-          <p>Faire émerger les apprentissages</p>
-         </div>
+       </div><!-- Pioche de cartes -->
+       <div style="background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h4 style="font-size: 20px; font-weight: 700; color: #333; font-family: 'Fredoka', sans-serif; margin-bottom: 16px; text-align: center;">🃏 Cartes à classer</h4>
+        <div id="cards-deck" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; max-height: 500px; overflow-y: auto; padding: 8px;"><!-- Les cartes seront insérées ici -->
         </div>
+       </div><!-- Bouton reset -->
+       <div style="text-align: center; margin-top: 24px;"><button id="reset-btn" style="background: linear-gradient(135deg, #f39200 0%, #FF9F1C 100%); color: white; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(243, 146, 0, 0.3); transition: transform 0.3s ease;"> 🔄 Recommencer </button>
        </div>
       </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Pilier 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          📊
-         </div>
-        </div>
-        <div class="step-title">
-         Évaluer
-        </div>
-        <div class="step-subtitle">
-         Les progressions
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📈
-         </div>
-         <div class="card-content"><strong>Indicateurs</strong>
-          <p>Mesurer les acquis et les progrès</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🔄
-         </div>
-         <div class="card-content"><strong>Suivi</strong>
-          <p>Tracer le parcours de chaque jeune</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Ajustement</strong>
-          <p>Adapter l'accompagnement en continu</p>
-         </div>
-        </div>
-       </div>
+     </div>
+    </div><!-- Les autres onglets restent identiques... --> <!-- DIAGNOSTIC -->
+    <div class="tab-content" id="diagnostic">
+     <h2 class="section-title">📋 Diagnostic Life Skills</h2>
+     <p class="section-subtitle">Évaluer les compétences psychosociales du jeune pour construire un parcours adapté</p>
+     <div class="intro-section">
+      <h3>🎯 Objectif du diagnostic</h3>
+      <p>Le diagnostic Life Skills permet d'<strong>identifier les axes prioritaires</strong> à travailler avec le jeune. Il ne s'agit pas de noter ou de juger, mais de <strong>comprendre où le jeune en est</strong> et de <strong>co-construire un parcours</strong> d'accompagnement adapté.<br><br><strong>Important :</strong> Ce diagnostic se fait <strong>avec le jeune</strong>, pas sur lui. C'est un moment d'échange et de co-réflexion.</p>
+     </div>
+     <div style="background: linear-gradient(135deg, rgba(0, 191, 179, 0.1) 0%, rgba(0, 191, 179, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #00BFB3; box-shadow: 0 4px 20px rgba(0, 191, 179, 0.1); margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #00BFB3; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">🔧 Outil de Diagnostic Interactif</h3>
+      <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 20px;">Utilisez l'outil de diagnostic interactif pour évaluer les compétences psychosociales du jeune sur les 4 axes Life Skills.</p>
+      <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;"><a href="https://mlpb-tools.github.io/DIAG4U/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #00BFB3 0%, #26D4C7 100%); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(0, 191, 179, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;"> 🚀 Accéder à l'outil de diagnostic </a>
+       <p style="font-size: 14px; color: #666; margin-top: 16px; margin-bottom: 0;">L'outil s'ouvrira dans un nouvel onglet</p>
       </div>
      </div>
     </div>
-    <div class="info-box box-orange" style="margin-top: 50px;">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💡 Ce que vous trouverez dans le Guide</h4>
-     <p style="margin-bottom: 15px;"><strong>📖 Section 1 : Cadre théorique</strong><br>
-       Comprendre les Life Skills, leur origine, leur importance et comment elles s'articulent avec votre pratique quotidienne</p>
-     <p style="margin-bottom: 15px;"><strong>🎯 Section 2 : Méthodologie d'accompagnement</strong><br>
-       De la première rencontre au suivi long terme : étapes clés, posture du conseiller, outils de diagnostic</p>
-     <p style="margin-bottom: 15px;"><strong>🎨 Section 3 : Activités et ateliers</strong><br>
-       Plus de 50 fiches d'activités prêtes à l'emploi pour les 10 domaines d'insertion</p>
-     <p style="margin-bottom: 15px;"><strong>📊 Section 4 : Évaluation et reporting</strong><br>
-       Grilles d'évaluation, outils de suivi, modèles de reporting pour vos financeurs</p>
-     <p style="margin-bottom: 15px;"><strong>🤝 Section 5 : Cas pratiques</strong><br>
-       Situations réelles rencontrées en Mission Locale et stratégies d'intervention</p>
-     <p style="margin-bottom: 0;"><strong>🔗 Section 6 : Ressources complémentaires</strong><br>
-       Bibliographie, sites web, outils numériques, partenaires ressources</p>
-    </div>
-    <div style="text-align: center; margin: 50px 0;"><a href="https://mlpb-tools.github.io/Guide-conseiller/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b7a); 
-                   color: white; padding: 20px 40px; border-radius: 30px; text-decoration: none; 
-                   font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.3rem; 
-                   box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(255, 71, 87, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(255, 71, 87, 0.3)';"> 📚 Accéder au Guide Complet du Conseiller </a>
-    </div>
-    <div class="mini-course" style="margin-top: 50px;">
-     <div class="course-header">
-      <div class="course-number">
-       💡
-      </div>
-      <div class="course-title">
-       Conseils pour une utilisation optimale
-      </div>
+    <div class="tab-content" id="parcours">
+     <h2 class="section-title">🧩 Micro Parcours Thématiques</h2>
+     <p class="section-subtitle">Des parcours courts et ciblés pour travailler des compétences spécifiques</p>
+     <div class="intro-section">
+      <h3>💡 Qu'est-ce qu'un micro parcours ?</h3>
+      <p>Un <strong>micro parcours thématique</strong> est une séquence courte (2 à 4 séances) qui combine plusieurs activités Life Skills autour d'un <strong>objectif précis</strong>. Chaque parcours est <strong>clé en main</strong> et permet de travailler une compétence de manière progressive et concrète.</p>
      </div>
-     <div class="course-content">
-      <h4>🎯 Pour débuter</h4>
-      <ul>
-       <li>Commencez par le diagnostic avec le jeune pour identifier ses besoins prioritaires</li>
-       <li>Choisissez 1 ou 2 domaines maximum à travailler en même temps</li>
-       <li>Privilégiez les mini-parcours courts et actionnables</li>
-      </ul>
-      <h4>🎨 Pour animer</h4>
-      <ul>
-       <li>Préparez vos ateliers en amont (matériel, timing, objectifs)</li>
-       <li>Favorisez l'apprentissage par l'action : jeux de rôle, mises en situation, exercices pratiques</li>
-       <li>Toujours conclure par un debriefing : "Qu'avez-vous appris ? Comment allez-vous l'utiliser ?"</li>
-      </ul>
-      <h4>📊 Pour évaluer</h4>
-      <ul>
-       <li>Utilisez le diagnostic en début et fin de parcours pour mesurer la progression</li>
-       <li>Encouragez l'auto-évaluation du jeune : qu'est-ce qui a changé pour lui ?</li>
-       <li>Documentez les réussites concrètes : emploi trouvé, formation suivie, problème résolu</li>
-      </ul>
-      <h4>🤝 Pour collaborer</h4>
-      <ul>
-       <li>Partagez vos retours d'expérience avec l'équipe</li>
-       <li>Adaptez les activités selon votre contexte local</li>
-       <li>N'hésitez pas à mixer plusieurs activités pour créer vos propres parcours</li>
-      </ul>
-     </div>
-    </div>
-    <div class="bubble-container" style="margin-top: 50px;">
-     <div class="bubble">
-      Pratique
-     </div>
-     <div class="bubble">
-      Complet
-     </div>
-     <div class="bubble">
-      Adaptable
-     </div>
-     <div class="bubble">
-      Éprouvé
-     </div>
-    </div>
-   </div><!-- PAGE DIAGNOSTIC -->
-   <div id="diagnostic" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">📋 Diagnostic Life Skills</h2>
-    <p class="subtitle">Évaluer mes compétences de vie et identifier mes axes de progression</p>
-    <div class="info-box box-turquoise" style="margin-bottom: 30px;">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎯 À propos du Diagnostic</h4>
-     <p style="margin-bottom: 15px;">Le Diagnostic Life Skills est un outil interactif qui vous permet d'évaluer vos compétences dans les 10 domaines clés de l'insertion :</p>
-     <ul style="margin: 10px 0; padding-left: 25px;">
-      <li>Emploi &amp; Employabilité</li>
-      <li>Formation &amp; Apprentissage</li>
-      <li>Orientation &amp; Projet Professionnel</li>
-      <li>Mobilité &amp; Déplacements</li>
-      <li>Santé &amp; Bien-être</li>
-      <li>Logement &amp; Autonomie Résidentielle</li>
-      <li>Citoyenneté &amp; Réseau</li>
-      <li>Finances &amp; Gestion du Budget</li>
-      <li>Loisirs &amp; Développement Personnel</li>
-      <li>Numérique &amp; Identité en ligne</li>
-     </ul>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">✨ Comment ça marche ?</h4>
-     <p style="margin-bottom: 15px;"><strong>1. Répondez aux questions</strong> - Le diagnostic vous pose des questions simples sur chaque domaine<br><strong>2. Obtenez votre profil</strong> - Visualisez vos forces et vos axes d'amélioration<br><strong>3. Identifiez vos priorités</strong> - Découvrez les mini-parcours qui vous correspondent le mieux</p>
-    </div>
-    <div style="text-align: center; margin: 50px 0;"><a href="https://mlpb-tools.github.io/DIAG4U/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b7a); 
-                   color: white; padding: 20px 40px; border-radius: 30px; text-decoration: none; 
-                   font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.3rem; 
-                   box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(255, 71, 87, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(255, 71, 87, 0.3)';"> 🚀 Lancer le Diagnostic DIAG4U </a>
-    </div>
-    <div class="journey-infographic" style="margin-top: 50px;">
-     <div class="journey-header">
-      <div class="journey-icon">
-       📊
-      </div>
-      <h3>Après le Diagnostic : Votre Parcours Personnalisé</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          📋
-         </div>
-        </div>
-        <div class="step-title">
-         Diagnostic
-        </div>
-        <div class="step-subtitle">
-         15-20 minutes
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          ✅
-         </div>
-         <div class="card-content"><strong>Auto-évaluation</strong>
-          <p>Questions sur vos compétences actuelles</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Analyse</strong>
-          <p>Identification de vos forces et faiblesses</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🗺️
-         </div>
-        </div>
-        <div class="step-title">
-         Résultats
-        </div>
-        <div class="step-subtitle">
-         Votre profil
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📈
-         </div>
-         <div class="card-content"><strong>Visualisation</strong>
-          <p>Graphique de vos compétences</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💡
-         </div>
-         <div class="card-content"><strong>Priorités</strong>
-          <p>Domaines à travailler en premier</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🎓
-         </div>
-        </div>
-        <div class="step-title">
-         Action
-        </div>
-        <div class="step-subtitle">
-         Mini-parcours
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📚
-         </div>
-         <div class="card-content"><strong>Recommandations</strong>
-          <p>Mini-parcours adaptés à votre profil</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🚀
-         </div>
-         <div class="card-content"><strong>Progression</strong>
-          <p>Activités concrètes pour progresser</p>
-         </div>
-        </div>
-       </div>
+     <div style="background: linear-gradient(135deg, rgba(0, 191, 179, 0.1) 0%, rgba(0, 191, 179, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #00BFB3; box-shadow: 0 4px 20px rgba(0, 191, 179, 0.1); margin-bottom: 32px;">
+      <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #00BFB3; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">🎯 Miniparcours Thématiques</h3>
+      <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 20px;">Découvrez des parcours thématiques courts et ciblés qui combinent plusieurs activités Life Skills autour d'objectifs spécifiques.</p>
+      <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;"><a href="https://mlpb-tools.my.canva.site/mini-parcours-th-matiques" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #00BFB3 0%, #26D4C7 100%); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(0, 191, 179, 0.3);"> 🚀 Explorer les miniparcours </a>
       </div>
      </div>
     </div>
-    <div class="bubble-container" style="margin-top: 50px;">
-     <div class="bubble">
-      Simple
+    <div class="tab-content" id="suivi">
+     <h2 class="section-title">🧑‍🤝‍🧑 Ateliers Collectifs</h2>
+     <p class="section-subtitle">Mettre en pratique les Life Skills avec d'autres jeunes</p>
+     <div class="intro-section">
+      <h3>💡 Pourquoi des ateliers collectifs ?</h3>
+      <p>Les <strong>ateliers collectifs</strong> permettent aux jeunes de <strong>mettre en pratique</strong> les compétences Life Skills dans un cadre <strong>bienveillant et dynamique</strong>.<br><br>
+        C'est l'occasion de <strong>partager des expériences</strong>, de <strong>s'entraîner ensemble</strong> et de <strong>progresser collectivement</strong>.</p>
      </div>
-     <div class="bubble">
-      Rapide
-     </div>
-     <div class="bubble">
-      Personnalisé
-     </div>
-     <div class="bubble">
-      Actionnable
-     </div>
-    </div>
-   </div><!-- PAGE MATRICE -->
-   <div id="matrice" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🔗 Matrice de Correspondance</h2>
-    <p class="subtitle">Relier les Life Skills aux 10 domaines d'insertion</p>
-    <div class="info-box box-turquoise" style="margin-bottom: 30px;">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎯 À propos de la Matrice</h4>
-     <p style="margin-bottom: 15px;">La Matrice de Correspondance est un outil stratégique qui permet de visualiser les connexions entre les compétences de vie (Life Skills) et les 10 domaines clés de l'insertion professionnelle et sociale.</p>
-     <ul style="margin: 10px 0; padding-left: 25px;">
-      <li><strong>Vision globale</strong> : Comprendre comment chaque compétence impacte plusieurs domaines</li>
-      <li><strong>Approche transversale</strong> : Identifier les synergies entre les différentes Life Skills</li>
-      <li><strong>Outil de pilotage</strong> : Prioriser les actions en fonction de leur impact multiple</li>
-      <li><strong>Support pédagogique</strong> : Expliquer l'interconnexion des compétences aux jeunes</li>
-     </ul>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🧭 Comment utiliser la Matrice ?</h4>
-     <p style="margin-bottom: 15px;"><strong>Pour les conseillers :</strong><br>
-       • Identifier quelles Life Skills travailler pour impacter un domaine spécifique<br>
-       • Construire des parcours cohérents en ciblant les compétences transversales<br>
-       • Mesurer l'impact global d'une action de formation</p>
-     <p style="margin-bottom: 15px;"><strong>Pour les jeunes :</strong><br>
-       • Comprendre comment une compétence peut les aider dans plusieurs aspects de leur vie<br>
-       • Visualiser leur progression de manière globale<br>
-       • Découvrir des liens inattendus entre leurs compétences</p>
-    </div>
-    <div style="text-align: center; margin: 50px 0;"><a href="https://mlpb-tools.github.io/matrice-LS4Y/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b7a); 
-                   color: white; padding: 20px 40px; border-radius: 30px; text-decoration: none; 
-                   font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.3rem; 
-                   box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 40px rgba(255, 71, 87, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(255, 71, 87, 0.3)';"> 🚀 Explorer la Matrice de Correspondance </a>
-    </div>
-    <div class="journey-infographic" style="margin-top: 50px;">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🔄
-      </div>
-      <h3>Les 3 Dimensions de la Matrice</h3>
-     </div>
-     <div class="journey-flow"><!-- Dimension 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🧩
-         </div>
-        </div>
-        <div class="step-title">
-         Life Skills
-        </div>
-        <div class="step-subtitle">
-         Les compétences de vie
-        </div>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px;"><!-- Carte Ateliers MLS4YOU -->
+      <div style="background: linear-gradient(135deg, rgba(0, 191, 179, 0.1) 0%, rgba(0, 191, 179, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #00BFB3; box-shadow: 0 4px 20px rgba(0, 191, 179, 0.1);">
+       <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #00BFB3; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">🎯 Ateliers MLS4YOU</h3>
+       <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 24px;">Accédez au catalogue complet des <strong>ateliers collectifs Life Skills</strong> organisés par la Mission Locale : descriptions, objectifs, déroulés et ressources pédagogiques.</p>
+       <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;"><a href="https://mlpb-tools.github.io/MLS4YOU/" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #00BFB3 0%, #26D4C7 100%); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(0, 191, 179, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;"> 🚀 Découvrir les ateliers </a>
+        <p style="font-size: 14px; color: #666; margin-top: 16px; margin-bottom: 0;">L'outil s'ouvrira dans un nouvel onglet</p>
        </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💪
-         </div>
-         <div class="card-content"><strong>Compétences transversales</strong>
-          <p>Communication, organisation, gestion émotionnelle</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Compétences spécifiques</strong>
-          <p>Techniques de recherche d'emploi, gestion budgétaire</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌟
-         </div>
-         <div class="card-content"><strong>Soft skills</strong>
-          <p>Adaptabilité, créativité, esprit d'équipe</p>
-         </div>
-        </div>
+      </div><!-- Carte Guidebook Complet -->
+      <div style="background: linear-gradient(135deg, rgba(216, 30, 91, 0.1) 0%, rgba(216, 30, 91, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #D81E5B; box-shadow: 0 4px 20px rgba(216, 30, 91, 0.1);">
+       <h3 style="font-size: 28px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #D81E5B; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">📚 Guidebook LS4YOU Complet</h3>
+       <p style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 24px;">Consultez le <strong>guide pédagogique complet</strong> avec tous les détails théoriques, les fiches pratiques et les ressources pour accompagner les jeunes avec l'approche Life Skills.</p>
+       <div style="background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center;"><a href="https://www.canva.com/design/DAGyBW1ulz4/IqIVXBCoWOzahB6ZFOGOrw/edit" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: linear-gradient(135deg, #D81E5B 0%, #E63462 100%); color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(216, 30, 91, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;"> 📖 Ouvrir le guidebook </a>
+        <p style="font-size: 14px; color: #666; margin-top: 16px; margin-bottom: 0;">Le guide s'ouvrira dans un nouvel onglet</p>
        </div>
       </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Dimension 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🎓
-         </div>
-        </div>
-        <div class="step-title">
-         Domaines
-        </div>
-        <div class="step-subtitle">
-         Les 10 axes d'insertion
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💼
-         </div>
-         <div class="card-content"><strong>Professionnel</strong>
-          <p>Emploi, Formation, Orientation</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🏠
-         </div>
-         <div class="card-content"><strong>Quotidien</strong>
-          <p>Logement, Mobilité, Santé, Finances</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌐
-         </div>
-         <div class="card-content"><strong>Social &amp; Digital</strong>
-          <p>Citoyenneté, Loisirs, Numérique</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Dimension 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          ⚡
-         </div>
-        </div>
-        <div class="step-title">
-         Impacts
-        </div>
-        <div class="step-subtitle">
-         Les correspondances
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Impact direct</strong>
-          <p>Compétence essentielle pour le domaine</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🔗
-         </div>
-         <div class="card-content"><strong>Impact secondaire</strong>
-          <p>Compétence qui facilite le domaine</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ✨
-         </div>
-         <div class="card-content"><strong>Synergie</strong>
-          <p>Effets multiplicateurs entre compétences</p>
-         </div>
-        </div>
-       </div>
+     </div>
+     <div style="background: linear-gradient(135deg, rgba(243, 146, 0, 0.1) 0%, rgba(243, 146, 0, 0.02) 100%); padding: 40px; border-radius: 20px; border: 3px solid #f39200; box-shadow: 0 4px 20px rgba(243, 146, 0, 0.1);">
+      <h3 style="font-size: 24px; font-weight: 700; font-family: 'Fredoka', sans-serif; color: #f39200; margin-bottom: 20px;">🎓 Les avantages des ateliers collectifs</h3>
+      <div style="font-size: 16px; color: #333; line-height: 1.8;">
+       <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #f39200; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Apprentissage par les pairs :</strong> Les jeunes apprennent les uns des autres et partagent leurs expériences</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #f39200; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Mise en pratique concrète :</strong> Des exercices et mises en situation pour expérimenter les compétences</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #f39200; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Dynamique de groupe :</strong> L'énergie collective renforce la motivation et l'engagement</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);"><span style="color: #f39200; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Cadre sécurisant :</strong> Un espace bienveillant pour expérimenter sans jugement</span></li>
+        <li style="padding: 10px 0; display: flex; align-items: start; gap: 12px;"><span style="color: #f39200; font-weight: 700; font-size: 20px;">✓</span> <span><strong>Création de liens :</strong> Développer son réseau et tisser des relations positives avec d'autres jeunes</span></li>
+       </ul>
       </div>
      </div>
     </div>
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Matrice Interactive : Life Skills × Domaines</h3>
-    <div style="background: white; border-radius: 25px; padding: 30px; margin: 30px 0; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow-x: auto;">
-     <table style="width: 100%; border-collapse: collapse; min-width: 900px;">
-      <thead>
-       <tr style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-        <th style="padding: 15px; color: white; text-align: left; font-family: 'Nunito', sans-serif; font-weight: 800; border-radius: 15px 0 0 0;">Life Skills</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">💼<br>
-         Emploi</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🎓<br>
-         Formation</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🧭<br>
-         Orientation</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🚗<br>
-         Mobilité</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">💚<br>
-         Santé</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🏠<br>
-         Logement</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🤝<br>
-         Citoyenneté</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">💰<br>
-         Finances</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem;">🎨<br>
-         Loisirs</th>
-        <th style="padding: 15px; color: white; text-align: center; font-size: 0.9rem; border-radius: 0 15px 0 0;">📱<br>
-         Numérique</th>
-       </tr>
-      </thead>
-      <tbody>
-       <tr style="background: #f8f9fa;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">💬 Communication</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-       </tr>
-       <tr style="background: white;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🎯 Organisation</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-       </tr>
-       <tr style="background: #f8f9fa;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🧠 Gestion émotionnelle</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-       </tr>
-       <tr style="background: white;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">💪 Confiance en soi</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-       </tr>
-       <tr style="background: #f8f9fa;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🤝 Travail d'équipe</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-       </tr>
-       <tr style="background: white;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🎨 Créativité</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-       </tr>
-       <tr style="background: #f8f9fa;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🔍 Esprit critique</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #e8f5e9; border-bottom: 1px solid #e0e0e0;" title="Impact secondaire">✨</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-       </tr>
-       <tr style="background: white;">
-        <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e0e0e0;">🔄 Adaptabilité</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #feca57; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact important">🔗</td>
-        <td style="padding: 12px; text-align: center; background: #ff4757; color: white; font-weight: bold; border-bottom: 1px solid #e0e0e0;" title="Impact majeur">🎯</td>
-       </tr>
-      </tbody>
-     </table>
-     <div style="margin-top: 30px; display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-       <div style="width: 30px; height: 30px; background: #ff4757; border-radius: 5px;"></div><span><strong>🎯 Impact majeur</strong> - Compétence essentielle</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px;">
-       <div style="width: 30px; height: 30px; background: #feca57; border-radius: 5px;"></div><span><strong>🔗 Impact important</strong> - Facilite grandement</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px;">
-       <div style="width: 30px; height: 30px; background: #e8f5e9; border-radius: 5px; border: 1px solid #ccc;"></div><span><strong>✨ Impact secondaire</strong> - Contribution indirecte</span>
-      </div>
-     </div>
-    </div>
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Focus : Exemples de Correspondances Clés</h3>
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       💬
-      </div>
-      <div class="course-title">
-       Communication Efficace
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Impact majeur sur :</h4>
-      <ul>
-       <li><strong>Emploi</strong> : Entretiens d'embauche, relations avec les collègues et hiérarchie</li>
-       <li><strong>Logement</strong> : Négociation avec le propriétaire, gestion du voisinage</li>
-       <li><strong>Citoyenneté</strong> : Construction du réseau, demande d'aide efficace</li>
-      </ul>
-      <h4>🔗 Impact important sur :</h4>
-      <ul>
-       <li><strong>Formation</strong> : Participation active, feedback constructif, travail en groupe</li>
-       <li><strong>Orientation</strong> : Entretiens avec conseillers, enquêtes métiers</li>
-       <li><strong>Santé</strong> : Communication avec professionnels de santé</li>
-       <li><strong>Loisirs</strong> : Intégration dans des groupes d'activités</li>
-       <li><strong>Numérique</strong> : Communication en ligne, emails professionnels</li>
-      </ul>
-     </div>
-    </div>
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       🎯
-      </div>
-      <div class="course-title">
-       Organisation &amp; Planification
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Impact majeur sur :</h4>
-      <ul>
-       <li><strong>Emploi</strong> : Respect des horaires, gestion des tâches, productivité</li>
-       <li><strong>Formation</strong> : Planning d'étude, respect des échéances, révisions</li>
-       <li><strong>Mobilité</strong> : Planification des trajets, anticipation des horaires</li>
-       <li><strong>Finances</strong> : Budget mensuel, épargne, suivi des dépenses</li>
-      </ul>
-      <h4>🔗 Impact important sur :</h4>
-      <ul>
-       <li><strong>Orientation</strong> : Étapes du projet professionnel</li>
-       <li><strong>Santé</strong> : Routines saines, rendez-vous médicaux</li>
-       <li><strong>Logement</strong> : Gestion des tâches ménagères, paiement du loyer</li>
-       <li><strong>Loisirs</strong> : Équilibre temps libre / obligations</li>
-       <li><strong>Numérique</strong> : Organisation des fichiers, agenda numérique</li>
-      </ul>
-     </div>
-    </div>
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       🧠
-      </div>
-      <div class="course-title">
-       Gestion Émotionnelle
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Impact majeur sur :</h4>
-      <ul>
-       <li><strong>Emploi</strong> : Résistance au stress professionnel, gestion des conflits</li>
-       <li><strong>Orientation</strong> : Gestion de l'incertitude, résilience face aux obstacles</li>
-       <li><strong>Santé</strong> : Bien-être mental, gestion du stress, prévention burn-out</li>
-       <li><strong>Loisirs</strong> : Équilibre vie pro/perso, ressourcement</li>
-      </ul>
-      <h4>🔗 Impact important sur :</h4>
-      <ul>
-       <li><strong>Formation</strong> : Gestion de la pression des examens</li>
-       <li><strong>Logement</strong> : Gestion du stress du déménagement, vie en colocation</li>
-       <li><strong>Citoyenneté</strong> : Empathie, bienveillance dans les relations</li>
-      </ul>
-     </div>
-    </div>
-    <div class="bubble-container" style="margin-top: 50px;">
-     <div class="bubble">
-      Interconnecté
-     </div>
-     <div class="bubble">
-      Transversal
-     </div>
-     <div class="bubble">
-      Holistique
-     </div>
-     <div class="bubble">
-      Stratégique
-     </div>
-    </div>
-   </div><!-- PAGE EMPLOI -->
-   <div id="emploi" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">💼 Emploi &amp; Employabilité</h2>
-    <p class="subtitle">Se préparer, se présenter et se démarquer sur le marché du travail</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       1
-      </div>
-      <div class="course-title">
-       Mini-Parcours Emploi
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer les compétences clés pour réussir sa recherche d'emploi et son intégration professionnelle</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Construction d'un pitch personnel percutant</li>
-       <li>Valorisation de son parcours et ses compétences</li>
-       <li>Préparation aux entretiens d'embauche</li>
-       <li>Compréhension des codes professionnels</li>
-       <li>Gestion de son image de marque personnelle</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Moi à mon meilleur"</strong> : Construire son pitch en 60 secondes</li>
-       <li><strong>"Questions sans tabou"</strong> : Préparer les questions difficiles en entretien</li>
-       <li><strong>"Mise en scène pro"</strong> : Simuler un entretien d'embauche</li>
-       <li><strong>"Mon super-pouvoir"</strong> : Identifier et valoriser ses atouts uniques</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🚀
-      </div>
-      <h3>Parcours : Du Pitch à l'Entretien</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          ✨
-         </div>
-        </div>
-        <div class="step-title">
-         Se Connaître
-        </div>
-        <div class="step-subtitle">
-         Identifier mes forces
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💪
-         </div>
-         <div class="card-content"><strong>Mes atouts</strong>
-          <p>Lister 5 qualités professionnelles</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Mes expériences</strong>
-          <p>Stages, jobs, bénévolat, projets</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🏆
-         </div>
-         <div class="card-content"><strong>Mes réussites</strong>
-          <p>3 exemples concrets de succès</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🎤
-         </div>
-        </div>
-        <div class="step-title">
-         Me Présenter
-        </div>
-        <div class="step-subtitle">
-         Créer mon pitch
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📝
-         </div>
-         <div class="card-content"><strong>Structure</strong>
-          <p>Qui je suis + Ce que je fais + Ce que je cherche</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⏱️
-         </div>
-         <div class="card-content"><strong>60 secondes</strong>
-          <p>Concis, percutant, mémorable</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎭
-         </div>
-         <div class="card-content"><strong>Entraînement</strong>
-          <p>Répéter devant le miroir ou un proche</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🎯
-         </div>
-        </div>
-        <div class="step-title">
-         Convaincre
-        </div>
-        <div class="step-subtitle">
-         Réussir l'entretien
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔍
-         </div>
-         <div class="card-content"><strong>Préparation</strong>
-          <p>Recherche sur l'entreprise et le poste</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💬
-         </div>
-         <div class="card-content"><strong>Questions types</strong>
-          <p>Préparer mes réponses aux questions classiques</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ✅
-         </div>
-         <div class="card-content"><strong>Attitude pro</strong>
-          <p>Tenue, ponctualité, langage, posture</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎤 Activité 1 : "Moi à mon meilleur" (Pitch personnel)</h4>
-     <p><strong>Durée</strong> : 30 minutes</p>
-     <p><strong>Matériel</strong> : Fiche modèle, chronomètre</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Identifier 3 qualités + 2 expériences marquantes</li>
-      <li>Rédiger un pitch de 60 secondes avec la structure : Qui je suis / Ce que je sais faire / Ce que je recherche</li>
-      <li>S'entraîner à voix haute (seul ou binôme)</li>
-      <li>Présenter devant le groupe et recevoir des feedbacks</li>
-     </ol>
-     <p><strong>Objectif</strong> : Savoir se présenter de manière claire, confiante et professionnelle</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💼 Activité 2 : "Questions sans tabou" (Préparation entretien)</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Cartes questions, grille de réponses</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Présenter 10 questions difficiles fréquentes en entretien</li>
-      <li>En binôme, préparer des réponses honnêtes et positives</li>
-      <li>Jeu de rôle : simulations d'entretiens</li>
-      <li>Debriefing collectif : bonnes pratiques et pièges à éviter</li>
-     </ol>
-     <p><strong>Objectif</strong> : Anticiper les questions difficiles et transformer ses faiblesses en forces</p>
-    </div>
-   </div><!-- PAGE FORMATION -->
-   <div id="formation" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🎓 Formation &amp; Apprentissage</h2>
-    <p class="subtitle">Apprendre tout au long de sa vie et développer ses compétences</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       2
-      </div>
-      <div class="course-title">
-       Mini-Parcours Formation
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer une posture d'apprenant actif et savoir tirer profit de toute expérience formative</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Identification de ses besoins en formation</li>
-       <li>Organisation et méthodes d'apprentissage</li>
-       <li>Feedback constructif et amélioration continue</li>
-       <li>Valorisation des compétences acquises</li>
-       <li>Auto-évaluation de sa progression</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Mes façons d'apprendre"</strong> : Découvrir son style d'apprentissage</li>
-       <li><strong>"Feedback power"</strong> : Transformer les critiques en opportunités</li>
-       <li><strong>"Mon portfolio de compétences"</strong> : Tracer ses apprentissages</li>
-       <li><strong>"Challenge 30 jours"</strong> : Acquérir une nouvelle compétence</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       📚
-      </div>
-      <h3>Parcours : Apprendre &amp; Progresser</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🔍
-         </div>
-        </div>
-        <div class="step-title">
-         Identifier
-        </div>
-        <div class="step-subtitle">
-         Mes besoins
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Objectifs</strong>
-          <p>Qu'est-ce que je veux apprendre ?</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🧩
-         </div>
-         <div class="card-content"><strong>Lacunes</strong>
-          <p>Quelles compétences me manquent ?</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌟
-         </div>
-         <div class="card-content"><strong>Motivations</strong>
-          <p>Pourquoi c'est important pour moi ?</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          📖
-         </div>
-        </div>
-        <div class="step-title">
-         Apprendre
-        </div>
-        <div class="step-subtitle">
-         À ma façon
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🎨
-         </div>
-         <div class="card-content"><strong>Mon style</strong>
-          <p>Visuel, auditif, kinesthésique</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🛠️
-         </div>
-         <div class="card-content"><strong>Ressources</strong>
-          <p>Tutos, formations, mentors, pratique</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📅
-         </div>
-         <div class="card-content"><strong>Organisation</strong>
-          <p>Planning réaliste et régulier</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          📈
-         </div>
-        </div>
-        <div class="step-title">
-         Progresser
-        </div>
-        <div class="step-subtitle">
-         Et valoriser
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💬
-         </div>
-         <div class="card-content"><strong>Feedback</strong>
-          <p>Demander des retours réguliers</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🏆
-         </div>
-         <div class="card-content"><strong>Célébrer</strong>
-          <p>Reconnaître mes progrès</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📜
-         </div>
-         <div class="card-content"><strong>Tracer</strong>
-          <p>Portfolio, certifications, preuves</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎨 Activité 1 : "Mes façons d'apprendre"</h4>
-     <p><strong>Durée</strong> : 30 minutes</p>
-     <p><strong>Matériel</strong> : Quiz style d'apprentissage, fiches explicatives</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Compléter le quiz pour identifier son style d'apprentissage dominant</li>
-      <li>Découvrir les caractéristiques de chaque style (visuel, auditif, kinesthésique)</li>
-      <li>Lister 3 techniques d'apprentissage adaptées à son profil</li>
-      <li>Partager en groupe : "Comment j'apprends le mieux"</li>
-     </ol>
-     <p><strong>Objectif</strong> : Mieux se connaître pour apprendre plus efficacement</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💬 Activité 2 : "Feedback Power"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Grille d'analyse feedback, exemples concrets</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Distinction entre critique constructive et critique destructive</li>
-      <li>Exercice : transformer 5 critiques négatives en opportunités d'amélioration</li>
-      <li>Jeu de rôle : donner et recevoir du feedback bienveillant</li>
-      <li>Plan d'action : comment intégrer le feedback dans ma progression</li>
-     </ol>
-     <p><strong>Objectif</strong> : Développer une posture d'amélioration continue</p>
-    </div>
-   </div><!-- PAGE ORIENTATION -->
-   <div id="orientation" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🧭 Orientation &amp; Projet Professionnel</h2>
-    <p class="subtitle">Construire son parcours et clarifier ses aspirations</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       3
-      </div>
-      <div class="course-title">
-       Mini-Parcours Orientation
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Clarifier ses aspirations professionnelles et construire un projet réaliste et motivant</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Exploration de ses intérêts et passions</li>
-       <li>Connaissance des secteurs et métiers</li>
-       <li>Construction d'un projet professionnel cohérent</li>
-       <li>Planification des étapes de réalisation</li>
-       <li>Flexibilité et adaptation du parcours</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Mon magazine perso"</strong> : Créer un Zine de son projet</li>
-       <li><strong>"Mes 3 vies"</strong> : Explorer différents scénarios de carrière</li>
-       <li><strong>"Interview de pro"</strong> : Enquêter sur un métier qui m'intéresse</li>
-       <li><strong>"Frise 1-5-10 ans"</strong> : Projeter son parcours dans le temps</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🗺️
-      </div>
-      <h3>Parcours : De l'Idée au Projet</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          💭
-         </div>
-        </div>
-        <div class="step-title">
-         Explorer
-        </div>
-        <div class="step-subtitle">
-         Mes intérêts
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          ❤️
-         </div>
-         <div class="card-content"><strong>Passions</strong>
-          <p>Ce qui me fait vibrer au quotidien</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⭐
-         </div>
-         <div class="card-content"><strong>Talents</strong>
-          <p>Ce que je fais naturellement bien</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌈
-         </div>
-         <div class="card-content"><strong>Valeurs</strong>
-          <p>Ce qui compte vraiment pour moi</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🔬
-         </div>
-        </div>
-        <div class="step-title">
-         Enquêter
-        </div>
-        <div class="step-subtitle">
-         Sur les métiers
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔍
-         </div>
-         <div class="card-content"><strong>Recherche</strong>
-          <p>Fiches métiers, vidéos, sites spécialisés</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💼
-         </div>
-         <div class="card-content"><strong>Rencontres</strong>
-          <p>Professionnels, salons, immersions</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📊
-         </div>
-         <div class="card-content"><strong>Réalités</strong>
-          <p>Salaire, conditions, évolutions</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🎯
-         </div>
-        </div>
-        <div class="step-title">
-         Construire
-        </div>
-        <div class="step-subtitle">
-         Mon projet
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🗺️
-         </div>
-         <div class="card-content"><strong>Plan d'action</strong>
-          <p>Étapes concrètes pour y arriver</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📅
-         </div>
-         <div class="card-content"><strong>Timeline</strong>
-          <p>Court, moyen et long terme</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🔄
-         </div>
-         <div class="card-content"><strong>Flexibilité</strong>
-          <p>Rester ouvert aux opportunités</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">📰 Activité 1 : "Mon Magazine Perso" (Zine)</h4>
-     <p><strong>Durée</strong> : 60 minutes</p>
-     <p><strong>Matériel</strong> : Feuilles A4, feutres, magazines à découper, colle</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Créer un mini-magazine (format A5 plié) sur son projet professionnel</li>
-      <li>Pages à inclure : Qui je suis / Mes passions / Mon métier de rêve / Mon plan / Mes inspirations</li>
-      <li>Utiliser dessins, collages, mots-clés pour illustrer</li>
-      <li>Présenter son Zine au groupe</li>
-     </ol>
-     <p><strong>Objectif</strong> : Clarifier et visualiser son projet de manière créative</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🕐 Activité 2 : "Frise 1-5-10 ans"</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Grande feuille, marqueurs</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Tracer une ligne du temps : Aujourd'hui → Dans 1 an → Dans 5 ans → Dans 10 ans</li>
-      <li>Pour chaque étape, noter : Formation / Emploi / Compétences / Vie perso</li>
-      <li>Identifier les jalons importants et les étapes intermédiaires</li>
-      <li>Partager sa vision et recevoir des suggestions</li>
-     </ol>
-     <p><strong>Objectif</strong> : Se projeter dans le futur et planifier son parcours</p>
-    </div>
-   </div><!-- PAGE MOBILITÉ -->
-   <div id="mobilite" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🚗 Mobilité &amp; Déplacements</h2>
-    <p class="subtitle">Se déplacer efficacement pour accéder aux opportunités</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       4
-      </div>
-      <div class="course-title">
-       Mini-Parcours Mobilité
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer son autonomie dans les déplacements et élargir son rayon d'action professionnel</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Connaissance des solutions de transport disponibles</li>
-       <li>Planification d'itinéraires optimaux</li>
-       <li>Gestion du budget transport</li>
-       <li>Résolution de problèmes de mobilité</li>
-       <li>Confiance dans ses déplacements</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Ma carte de mobilité"</strong> : Cartographier mes déplacements possibles</li>
-       <li><strong>"Mission impossible"</strong> : Planifier un trajet complexe</li>
-       <li><strong>"Budget roues"</strong> : Calculer le coût de ma mobilité</li>
-       <li><strong>"Plan B, C, D"</strong> : Anticiper les imprévus de transport</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🛣️
-      </div>
-      <h3>Parcours : Maîtriser ma Mobilité</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          📍
-         </div>
-        </div>
-        <div class="step-title">
-         Cartographier
-        </div>
-        <div class="step-subtitle">
-         Mon territoire
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🏘️
-         </div>
-         <div class="card-content"><strong>Quartier</strong>
-          <p>Ce que je peux atteindre à pied</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🚌
-         </div>
-         <div class="card-content"><strong>Agglomération</strong>
-          <p>Accessible en transports en commun</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌍
-         </div>
-         <div class="card-content"><strong>Région</strong>
-          <p>Opportunités plus éloignées</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🗺️
-         </div>
-        </div>
-        <div class="step-title">
-         Planifier
-        </div>
-        <div class="step-subtitle">
-         Mes trajets
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔍
-         </div>
-         <div class="card-content"><strong>Outils</strong>
-          <p>Apps, horaires, cartes interactives</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⏱️
-         </div>
-         <div class="card-content"><strong>Durée</strong>
-          <p>Calculer temps de trajet réaliste</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💶
-         </div>
-         <div class="card-content"><strong>Coût</strong>
-          <p>Tickets, abonnements, carburant</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🚀
-         </div>
-        </div>
-        <div class="step-title">
-         Anticiper
-        </div>
-        <div class="step-subtitle">
-         Les imprévus
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔄
-         </div>
-         <div class="card-content"><strong>Plan B</strong>
-          <p>Solutions alternatives en cas de problème</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📞
-         </div>
-         <div class="card-content"><strong>Contacts</strong>
-          <p>Numéros utiles et ressources</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💪
-         </div>
-         <div class="card-content"><strong>Confiance</strong>
-          <p>Oser explorer de nouveaux trajets</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🗺️ Activité 1 : "Ma Carte de Mobilité"</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Carte locale, marqueurs, post-its</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Sur une carte, localiser son domicile (point de départ)</li>
-      <li>Tracer des cercles : 15 min à pied / 30 min en transport / 1h de trajet</li>
-      <li>Identifier les lieux importants : Mission Locale, formations, entreprises, services</li>
-      <li>Noter les lignes de transport disponibles et leurs horaires</li>
-     </ol>
-     <p><strong>Objectif</strong> : Visualiser son rayon d'action et les opportunités accessibles</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🎯 Activité 2 : "Mission Impossible"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Smartphones, fiches scénarios</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Recevoir un scénario : "Entretien d'embauche demain à 9h à l'adresse X"</li>
-      <li>Planifier le trajet complet : horaires, correspondances, durée, coût</li>
-      <li>Prévoir un Plan B en cas de retard ou grève</li>
-      <li>Présenter son plan au groupe et comparer les stratégies</li>
-     </ol>
-     <p><strong>Objectif</strong> : Développer l'autonomie et la capacité de planification</p>
-    </div>
-   </div><!-- PAGE SANTÉ -->
-   <div id="sante" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">💚 Santé &amp; Bien-être</h2>
-    <p class="subtitle">Prendre soin de soi pour être au meilleur de sa forme</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       5
-      </div>
-      <div class="course-title">
-       Mini-Parcours Santé
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer des habitudes de vie saines et apprendre à gérer son stress et ses émotions</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Gestion du stress et des émotions</li>
-       <li>Connaissance des ressources santé</li>
-       <li>Hygiène de vie et prévention</li>
-       <li>Équilibre vie pro / vie perso</li>
-       <li>Écoute de son corps et ses besoins</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Stressomètre"</strong> : Identifier et mesurer son stress</li>
-       <li><strong>"Ma boîte à outils zen"</strong> : Techniques anti-stress personnalisées</li>
-       <li><strong>"Roue de l'équilibre"</strong> : Évaluer son bien-être global</li>
-       <li><strong>"SOS Émotions"</strong> : Stratégies de gestion émotionnelle</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🌱
-      </div>
-      <h3>Parcours : Cultiver mon Bien-être</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🔍
-         </div>
-        </div>
-        <div class="step-title">
-         Écouter
-        </div>
-        <div class="step-subtitle">
-         Mon corps &amp; mes émotions
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          ❤️
-         </div>
-         <div class="card-content"><strong>Signaux</strong>
-          <p>Fatigue, tension, irritabilité</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📊
-         </div>
-         <div class="card-content"><strong>Stressomètre</strong>
-          <p>Mesurer mon niveau de stress</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🧘
-         </div>
-         <div class="card-content"><strong>Besoins</strong>
-          <p>Repos, activité, expression</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🛠️
-         </div>
-        </div>
-        <div class="step-title">
-         Outiller
-        </div>
-        <div class="step-subtitle">
-         Ma boîte anti-stress
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🌬️
-         </div>
-         <div class="card-content"><strong>Respiration</strong>
-          <p>Exercices de cohérence cardiaque</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🚶
-         </div>
-         <div class="card-content"><strong>Mouvement</strong>
-          <p>Sport, marche, étirements</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💭
-         </div>
-         <div class="card-content"><strong>Expression</strong>
-          <p>Parler, écrire, créer</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🌟
-         </div>
-        </div>
-        <div class="step-title">
-         Équilibrer
-        </div>
-        <div class="step-subtitle">
-         Ma vie au quotidien
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          😴
-         </div>
-         <div class="card-content"><strong>Sommeil</strong>
-          <p>Rythme régulier et récupération</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🥗
-         </div>
-         <div class="card-content"><strong>Alimentation</strong>
-          <p>Équilibrée et adaptée</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎨
-         </div>
-         <div class="card-content"><strong>Loisirs</strong>
-          <p>Temps pour soi et plaisir</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">📊 Activité 1 : "Stressomètre"</h4>
-     <p><strong>Durée</strong> : 30 minutes</p>
-     <p><strong>Matériel</strong> : Fiche stressomètre, stylos</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Évaluer son niveau de stress actuel sur une échelle de 1 à 10</li>
-      <li>Identifier les 3 principales sources de stress (travail, argent, relations, santé...)</li>
-      <li>Noter les signaux physiques et émotionnels ressentis</li>
-      <li>Pour chaque source, noter : Ce que je peux contrôler / Ce que je ne peux pas contrôler</li>
-     </ol>
-     <p><strong>Objectif</strong> : Prendre conscience de son stress et identifier les leviers d'action</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🧰 Activité 2 : "Ma Boîte à Outils Zen"</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Fiches techniques, boîte décorative (optionnel)</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Présenter 5 techniques anti-stress : respiration, marche, musique, écriture, parler</li>
-      <li>Tester ensemble : exercice de respiration 4-7-8 (4 secondes inspir, 7 retenue, 8 expir)</li>
-      <li>Chacun sélectionne ses 3 techniques préférées</li>
-      <li>Créer sa "boîte à outils" personnelle avec des cartes techniques</li>
-     </ol>
-     <p><strong>Objectif</strong> : Disposer d'outils concrets et immédiatement utilisables</p>
-    </div>
-   </div><!-- PAGE LOGEMENT -->
-   <div id="logement" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🏠 Logement &amp; Autonomie Résidentielle</h2>
-    <p class="subtitle">Accéder et maintenir un logement adapté à ses besoins</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       6
-      </div>
-      <div class="course-title">
-       Mini-Parcours Logement
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Comprendre les démarches d'accès au logement et gérer son budget habitation</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Connaissance des types de logements et aides disponibles</li>
-       <li>Élaboration d'un budget logement réaliste</li>
-       <li>Compréhension des droits et devoirs du locataire</li>
-       <li>Gestion des démarches administratives</li>
-       <li>Entretien et vie quotidienne dans son logement</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Budget logement"</strong> : Calculer le coût total d'un logement</li>
-       <li><strong>"Rêver pour planifier"</strong> : Définir son logement idéal vs réaliste</li>
-       <li><strong>"Check-list déménagement"</strong> : Toutes les étapes pour s'installer</li>
-       <li><strong>"SOS Logement"</strong> : Résoudre les problèmes courants</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🔑
-      </div>
-      <h3>Parcours : Accéder à mon Logement</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          💭
-         </div>
-        </div>
-        <div class="step-title">
-         Définir
-        </div>
-        <div class="step-subtitle">
-         Mes besoins
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📍
-         </div>
-         <div class="card-content"><strong>Localisation</strong>
-          <p>Proximité travail, transports, services</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📏
-         </div>
-         <div class="card-content"><strong>Taille</strong>
-          <p>Studio, T1, T2, colocation</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💰
-         </div>
-         <div class="card-content"><strong>Budget</strong>
-          <p>Max 33% de mes revenus</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🔍
-         </div>
-        </div>
-        <div class="step-title">
-         Chercher
-        </div>
-        <div class="step-subtitle">
-         &amp; constituer mon dossier
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🌐
-         </div>
-         <div class="card-content"><strong>Recherche</strong>
-          <p>Sites, agences, bouche-à-oreille</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📄
-         </div>
-         <div class="card-content"><strong>Dossier</strong>
-          <p>Pièces d'identité, revenus, garants</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🤝
-         </div>
-         <div class="card-content"><strong>Aides</strong>
-          <p>CAF, Action Logement, FSL</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🏠
-         </div>
-        </div>
-        <div class="step-title">
-         Gérer
-        </div>
-        <div class="step-subtitle">
-         Mon logement
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          ✍️
-         </div>
-         <div class="card-content"><strong>Contrat</strong>
-          <p>Bail, état des lieux, assurance</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💶
-         </div>
-         <div class="card-content"><strong>Charges</strong>
-          <p>Loyer, électricité, eau, internet</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🛠️
-         </div>
-         <div class="card-content"><strong>Entretien</strong>
-          <p>Ménage, réparations, relation propriétaire</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💰 Activité 1 : "Budget Logement Complet"</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Calculatrice, tableau budget, exemples de factures</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Lister TOUTES les dépenses liées au logement : loyer, charges, électricité, gaz, eau, internet, assurance, meubles</li>
-      <li>Calculer le coût mensuel total réel</li>
-      <li>Comparer avec ses revenus actuels ou futurs (règle des 33%)</li>
-      <li>Identifier les aides possibles (APL, garantie Visale, FSL)</li>
-     </ol>
-     <p><strong>Objectif</strong> : Avoir une vision réaliste du coût d'un logement</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🌈 Activité 2 : "Rêver pour Planifier"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Feuilles A3, magazines déco, feutres, colle</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Diviser la feuille en 2 colonnes : "Mon logement de rêve" / "Mon logement réaliste aujourd'hui"</li>
-      <li>Rêve : Décrire ou coller images du logement idéal sans contrainte</li>
-      <li>Réaliste : Définir ce qui est accessible maintenant avec son budget</li>
-      <li>Identifier 3 critères non-négociables et 3 sur lesquels je peux faire des compromis</li>
-     </ol>
-     <p><strong>Objectif</strong> : Équilibrer aspirations et pragmatisme</p>
-    </div>
-   </div><!-- PAGE CITOYENNETÉ -->
-   <div id="citoyennete" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🤝 Citoyenneté &amp; Réseau</h2>
-    <p class="subtitle">S'entourer, participer et construire son réseau de soutien</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       7
-      </div>
-      <div class="course-title">
-       Mini-Parcours Citoyenneté
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer son réseau personnel et professionnel et s'impliquer dans la société</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Construction d'un réseau de soutien solide</li>
-       <li>Communication et relations interpersonnelles</li>
-       <li>Connaissance des droits et devoirs du citoyen</li>
-       <li>Engagement et participation citoyenne</li>
-       <li>Demande d'aide et entraide</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Mon réseau de soutien"</strong> : Cartographier ses relations</li>
-       <li><strong>"Les 3 cercles"</strong> : Famille, amis, professionnels</li>
-       <li><strong>"Osez demander"</strong> : Formuler une demande d'aide</li>
-       <li><strong>"Engagement express"</strong> : Trouver une cause qui me parle</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🌐
-      </div>
-      <h3>Parcours : Construire mon Réseau</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🗺️
-         </div>
-        </div>
-        <div class="step-title">
-         Cartographier
-        </div>
-        <div class="step-subtitle">
-         Mon réseau actuel
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          👨‍👩‍👧‍👦
-         </div>
-         <div class="card-content"><strong>Famille</strong>
-          <p>Parents, fratrie, famille élargie</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          👥
-         </div>
-         <div class="card-content"><strong>Amis</strong>
-          <p>Proches, connaissances, camarades</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💼
-         </div>
-         <div class="card-content"><strong>Professionnels</strong>
-          <p>Conseillers, mentors, collègues</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🌱
-         </div>
-        </div>
-        <div class="step-title">
-         Développer
-        </div>
-        <div class="step-subtitle">
-         Mes relations
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💬
-         </div>
-         <div class="card-content"><strong>Communication</strong>
-          <p>Prendre des nouvelles, maintenir le lien</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Opportunités</strong>
-          <p>Événements, rencontres, associations</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🤝
-         </div>
-         <div class="card-content"><strong>Réciprocité</strong>
-          <p>Donner autant que recevoir</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🆘
-         </div>
-        </div>
-        <div class="step-title">
-         Mobiliser
-        </div>
-        <div class="step-subtitle">
-         Mon réseau
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🗣️
-         </div>
-         <div class="card-content"><strong>Demander</strong>
-          <p>Oser solliciter de l'aide</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎁
-         </div>
-         <div class="card-content"><strong>Offrir</strong>
-          <p>Partager ses compétences et ressources</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌟
-         </div>
-         <div class="card-content"><strong>S'engager</strong>
-          <p>Associations, bénévolat, projets collectifs</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🗺️ Activité 1 : "Mon Réseau de Soutien"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Grande feuille, post-its colorés</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Dessiner 3 cercles concentriques : Moi au centre, puis Cercle 1 (proches), Cercle 2 (réseau), Cercle 3 (ressources)</li>
-      <li>Placer des post-its avec les noms des personnes dans chaque cercle</li>
-      <li>Identifier le type de soutien : émotionnel 💚 / pratique 🛠️ / professionnel 💼 / financier 💰</li>
-      <li>Repérer les manques et les opportunités de développement</li>
-     </ol>
-     <p><strong>Objectif</strong> : Visualiser et évaluer son réseau de soutien</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🗣️ Activité 2 : "Oser Demander"</h4>
-     <p><strong>Durée</strong> : 35 minutes</p>
-     <p><strong>Matériel</strong> : Fiches scénarios, grille de formulation</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Identifier une situation où j'ai besoin d'aide (conseil, prêt, soutien, information)</li>
-      <li>Utiliser la méthode DESC : Décrire / Exprimer / Suggérer / Conséquences positives</li>
-      <li>Jeu de rôle en binôme : formuler sa demande de manière claire et respectueuse</li>
-      <li>Debriefing : Comment accueillir un refus ? Comment remercier ?</li>
-     </ol>
-     <p><strong>Objectif</strong> : Apprendre à demander de l'aide efficacement</p>
-    </div>
-   </div><!-- PAGE FINANCES -->
-   <div id="finances" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">💰 Finances &amp; Gestion du Budget</h2>
-    <p class="subtitle">Maîtriser son argent et construire sa stabilité financière</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       8
-      </div>
-      <div class="course-title">
-       Mini-Parcours Finances
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Acquérir les bases de la gestion financière et développer une relation saine avec l'argent</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Élaboration et suivi d'un budget personnel</li>
-       <li>Compréhension de sa fiche de paie</li>
-       <li>Gestion des dépenses et de l'épargne</li>
-       <li>Connaissance des droits sociaux et aides financières</li>
-       <li>Anticipation et gestion des imprévus</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Décoder ma fiche de paie"</strong> : Comprendre chaque ligne</li>
-       <li><strong>"Budget 50/30/20"</strong> : Méthode simple de répartition</li>
-       <li><strong>"Mes droits financiers"</strong> : RSA, Prime d'activité, APL</li>
-       <li><strong>"Plan anti-galère"</strong> : Constituer une épargne de précaution</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       💳
-      </div>
-      <h3>Parcours : Maîtriser mon Argent</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          📊
-         </div>
-        </div>
-        <div class="step-title">
-         Analyser
-        </div>
-        <div class="step-subtitle">
-         Ma situation
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💵
-         </div>
-         <div class="card-content"><strong>Revenus</strong>
-          <p>Salaire, aides, allocations</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💸
-         </div>
-         <div class="card-content"><strong>Dépenses</strong>
-          <p>Fixes (loyer, abonnements) et variables</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⚖️
-         </div>
-         <div class="card-content"><strong>Équilibre</strong>
-          <p>Reste à vivre après les charges</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          📝
-         </div>
-        </div>
-        <div class="step-title">
-         Planifier
-        </div>
-        <div class="step-subtitle">
-         Mon budget
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🏠
-         </div>
-         <div class="card-content"><strong>Essentiels (50%)</strong>
-          <p>Logement, alimentation, transport</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎉
-         </div>
-         <div class="card-content"><strong>Loisirs (30%)</strong>
-          <p>Sorties, vêtements, hobbies</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🐷
-         </div>
-         <div class="card-content"><strong>Épargne (20%)</strong>
-          <p>Urgences et projets futurs</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🎯
-         </div>
-        </div>
-        <div class="step-title">
-         Optimiser
-        </div>
-        <div class="step-subtitle">
-         Mes finances
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📉
-         </div>
-         <div class="card-content"><strong>Réduire</strong>
-          <p>Identifier et couper les dépenses superflues</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎁
-         </div>
-         <div class="card-content"><strong>Aides</strong>
-          <p>Mobiliser tous mes droits sociaux</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💪
-         </div>
-         <div class="card-content"><strong>Anticiper</strong>
-          <p>Épargne de précaution et projets</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">📄 Activité 1 : "Décoder ma Fiche de Paie"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Exemple de fiche de paie, lexique</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Présenter les différentes sections : Identité / Salaire brut / Cotisations / Salaire net</li>
-      <li>Expliquer chaque ligne : Sécurité sociale, retraite, chômage, CSG/CRDS</li>
-      <li>Calculer : Brut → Net → Net à payer (après impôts éventuels)</li>
-      <li>Vérifier ensemble une vraie fiche de paie apportée par un jeune</li>
-     </ol>
-     <p><strong>Objectif</strong> : Comprendre sa rémunération réelle et ses droits</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💡 Activité 2 : "Budget 50/30/20"</h4>
-     <p><strong>Durée</strong> : 45 minutes</p>
-     <p><strong>Matériel</strong> : Tableau budget, calculatrice</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Présenter la méthode : 50% besoins essentiels / 30% envies / 20% épargne</li>
-      <li>Lister toutes ses dépenses mensuelles dans chaque catégorie</li>
-      <li>Calculer les pourcentages réels de sa situation actuelle</li>
-      <li>Identifier 3 ajustements pour se rapprocher de la règle 50/30/20</li>
-     </ol>
-     <p><strong>Objectif</strong> : Adopter une méthode simple et équilibrée de gestion</p>
-    </div>
-   </div><!-- PAGE LOISIRS -->
-   <div id="loisirs" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">🎨 Loisirs &amp; Développement Personnel</h2>
-    <p class="subtitle">Cultiver ses passions et équilibrer sa vie</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       9
-      </div>
-      <div class="course-title">
-       Mini-Parcours Loisirs
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Valoriser l'importance des loisirs et développer des activités épanouissantes</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Identification de ses centres d'intérêt</li>
-       <li>Gestion de son temps libre</li>
-       <li>Découverte de nouvelles activités</li>
-       <li>Équilibre vie professionnelle / personnelle</li>
-       <li>Valorisation des loisirs dans son parcours</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Mes passions au quotidien"</strong> : Cartographier ses loisirs</li>
-       <li><strong>"Challenge découverte"</strong> : Tester une nouvelle activité</li>
-       <li><strong>"Loisirs = Compétences"</strong> : Identifier les soft skills acquises</li>
-       <li><strong>"Mon temps pour moi"</strong> : Planifier ses moments de plaisir</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       🌈
-      </div>
-      <h3>Parcours : Cultiver mes Passions</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🔍
-         </div>
-        </div>
-        <div class="step-title">
-         Découvrir
-        </div>
-        <div class="step-subtitle">
-         Ce qui me passionne
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          ❤️
-         </div>
-         <div class="card-content"><strong>Passions</strong>
-          <p>Ce qui me fait vibrer</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🧩
-         </div>
-         <div class="card-content"><strong>Talents</strong>
-          <p>Ce que je fais bien naturellement</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🌟
-         </div>
-         <div class="card-content"><strong>Envies</strong>
-          <p>Ce que j'aimerais essayer</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          ⏰
-         </div>
-        </div>
-        <div class="step-title">
-         Organiser
-        </div>
-        <div class="step-subtitle">
-         Mon temps libre
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          📅
-         </div>
-         <div class="card-content"><strong>Planning</strong>
-          <p>Bloquer des créneaux pour mes loisirs</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💰
-         </div>
-         <div class="card-content"><strong>Budget</strong>
-          <p>Activités gratuites et payantes</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          👥
-         </div>
-         <div class="card-content"><strong>Social</strong>
-          <p>Seul ou en groupe</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          💼
-         </div>
-        </div>
-        <div class="step-title">
-         Valoriser
-        </div>
-        <div class="step-subtitle">
-         Mes compétences
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🎯
-         </div>
-         <div class="card-content"><strong>Soft Skills</strong>
-          <p>Créativité, persévérance, teamwork</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📝
-         </div>
-         <div class="card-content"><strong>CV</strong>
-          <p>Intégrer ses loisirs stratégiquement</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          💬
-         </div>
-         <div class="card-content"><strong>Entretien</strong>
-          <p>Parler de ses passions avec assurance</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🗺️ Activité 1 : "Mes Passions au Quotidien"</h4>
-     <p><strong>Durée</strong> : 35 minutes</p>
-     <p><strong>Matériel</strong> : Feuille A3, feutres, post-its</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Créer une carte mentale avec "MOI" au centre</li>
-      <li>Tracer des branches : Sport / Créativité / Culture / Social / Digital / Nature</li>
-      <li>Pour chaque branche, noter ses activités actuelles et celles qu'on aimerait essayer</li>
-      <li>Identifier 1 passion à développer davantage ce mois-ci</li>
-     </ol>
-     <p><strong>Objectif</strong> : Visualiser la richesse de ses centres d'intérêt</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💼 Activité 2 : "Loisirs = Compétences"</h4>
-     <p><strong>Durée</strong> : 40 minutes</p>
-     <p><strong>Matériel</strong> : Tableau de correspondances, exemples</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Lister 3 loisirs ou passions pratiqués régulièrement</li>
-      <li>Pour chacun, identifier les compétences développées (ex: foot = esprit d'équipe, stratégie, discipline)</li>
-      <li>Formuler comment en parler en entretien : "Le football m'a appris..."</li>
-      <li>Rédiger 2-3 lignes pour intégrer dans son CV ou pitch</li>
-     </ol>
-     <p><strong>Objectif</strong> : Transformer ses loisirs en atouts professionnels</p>
-    </div>
-   </div><!-- PAGE NUMÉRIQUE -->
-   <div id="numerique" class="page">
-    <div class="circle-decoration circle-turquoise"></div>
-    <div class="circle-decoration circle-yellow"></div>
-    <h2 class="title-section">📱 Numérique &amp; Identité en ligne</h2>
-    <p class="subtitle">Maîtriser les outils digitaux et gérer son e-réputation</p><!-- Mini-parcours -->
-    <div class="mini-course">
-     <div class="course-header">
-      <div class="course-number">
-       10
-      </div>
-      <div class="course-title">
-       Mini-Parcours Numérique
-      </div>
-     </div>
-     <div class="course-content">
-      <h4>🎯 Objectif</h4>
-      <p>Développer ses compétences numériques et construire une identité en ligne professionnelle</p>
-      <h4>🔑 Compétences travaillées</h4>
-      <ul>
-       <li>Maîtrise des outils digitaux essentiels</li>
-       <li>Gestion de son identité numérique</li>
-       <li>Sécurité et protection des données</li>
-       <li>Communication professionnelle en ligne</li>
-       <li>Recherche d'information et fact-checking</li>
-      </ul>
-      <h4>🎬 Activités proposées</h4>
-      <ul>
-       <li><strong>"Mon profil LinkedIn"</strong> : Créer sa vitrine professionnelle</li>
-       <li><strong>"Google moi"</strong> : Auditer son e-réputation</li>
-       <li><strong>"Boîte mail pro"</strong> : Rédiger des emails efficaces</li>
-       <li><strong>"Cyber sécurité"</strong> : Protéger ses données</li>
-      </ul>
-     </div>
-    </div><!-- Infographie Journey -->
-    <div class="journey-infographic">
-     <div class="journey-header">
-      <div class="journey-icon">
-       💻
-      </div>
-      <h3>Parcours : Maîtriser mon Identité Digitale</h3>
-     </div>
-     <div class="journey-flow"><!-- Étape 1 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #ff4757, #ff6b7a);">
-         <div class="step-number">
-          1
-         </div>
-         <div class="step-emoji">
-          🔍
-         </div>
-        </div>
-        <div class="step-title">
-         Auditer
-        </div>
-        <div class="step-subtitle">
-         Mon empreinte digitale
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔎
-         </div>
-         <div class="card-content"><strong>Recherche</strong>
-          <p>"Googler" son nom et prénom</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📸
-         </div>
-         <div class="card-content"><strong>Réseaux sociaux</strong>
-          <p>Vérifier paramètres de confidentialité</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⚠️
-         </div>
-         <div class="card-content"><strong>Contenu problématique</strong>
-          <p>Identifier ce qui peut nuire à mon image</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 2 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #feca57, #ff9f43);">
-         <div class="step-number">
-          2
-         </div>
-         <div class="step-emoji">
-          🏗️
-         </div>
-        </div>
-        <div class="step-title">
-         Construire
-        </div>
-        <div class="step-subtitle">
-         Ma présence pro
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          💼
-         </div>
-         <div class="card-content"><strong>LinkedIn</strong>
-          <p>Profil complet avec photo pro</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          📧
-         </div>
-         <div class="card-content"><strong>Email pro</strong>
-          <p>Adresse sérieuse et signature</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ✍️
-         </div>
-         <div class="card-content"><strong>Contenu</strong>
-          <p>Partager des articles, projets, réussites</p>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="journey-arrow">
-       <svg class="arrow-svg" viewbox="0 0 80 50" xmlns="http://www.w3.org/2000/svg"><path d="M 10 25 L 60 25" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" /> <path d="M 50 15 L 70 25 L 50 35" stroke="#00d2d3" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-       </svg>
-      </div><!-- Étape 3 -->
-      <div class="journey-step">
-       <div class="step-visual">
-        <div class="step-icon" style="background: linear-gradient(135deg, #00d2d3, #7bed9f);">
-         <div class="step-number">
-          3
-         </div>
-         <div class="step-emoji">
-          🛡️
-         </div>
-        </div>
-        <div class="step-title">
-         Protéger
-        </div>
-        <div class="step-subtitle">
-         Mes données
-        </div>
-       </div>
-       <div class="step-details">
-        <div class="detail-card">
-         <div class="card-icon">
-          🔒
-         </div>
-         <div class="card-content"><strong>Mots de passe</strong>
-          <p>Forts, uniques, gestionnaire</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          🎭
-         </div>
-         <div class="card-content"><strong>Confidentialité</strong>
-          <p>Paramètres adaptés sur chaque plateforme</p>
-         </div>
-        </div>
-        <div class="detail-card">
-         <div class="card-icon">
-          ⚡
-         </div>
-         <div class="card-content"><strong>Vigilance</strong>
-          <p>Phishing, arnaques, fake news</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Activités clés -->
-    <h3 class="title-section" style="font-size: 2rem; margin-top: 50px;">Activités Pratiques</h3>
-    <div class="info-box box-turquoise">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">🔍 Activité 1 : "Google Moi !"</h4>
-     <p><strong>Durée</strong> : 30 minutes</p>
-     <p><strong>Matériel</strong> : Smartphones ou ordinateurs</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Rechercher son nom + prénom sur Google</li>
-      <li>Lister tout ce qui apparaît : réseaux sociaux, photos, articles, commentaires</li>
-      <li>Évaluer : Qu'est-ce qui donne une bonne image ? Une mauvaise image ?</li>
-      <li>Plan d'action : Nettoyer / Paramétrer / Créer du contenu positif</li>
-     </ol>
-     <p><strong>Objectif</strong> : Prendre conscience de son empreinte numérique</p>
-    </div>
-    <div class="info-box box-orange">
-     <h4 style="font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 0;">💼 Activité 2 : "Mon Profil LinkedIn"</h4>
-     <p><strong>Durée</strong> : 60 minutes</p>
-     <p><strong>Matériel</strong> : Smartphones, ordinateurs, photos</p>
-     <p><strong>Déroulé</strong> :</p>
-     <ol>
-      <li>Créer un compte LinkedIn (si pas déjà fait)</li>
-      <li>Ajouter : Photo professionnelle, titre accrocheur, résumé percutant</li>
-      <li>Renseigner : Expériences, formations, compétences, langues</li>
-      <li>Personnaliser l'URL et commencer à suivre des entreprises et secteurs d'intérêt</li>
-     </ol>
-     <p><strong>Objectif</strong> : Créer sa vitrine professionnelle en ligne</p>
-    </div>
-   </div>
+   </main>
   </div>
   <script>
-        const defaultConfig = {
-            main_title: "Guidebook Life Skills",
-            subtitle_text: "Mission Locale × LS4YOU",
-            organization_text: "Mission Locale × LS4YOU\nUn outil pratique pour les conseillers et les jeunes en insertion"
-        };
-
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+    // Tab navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const targetTab = this.getAttribute('data-tab');
+          
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          this.classList.add('active');
+          this.setAttribute('aria-selected', 'true');
+          document.getElementById(targetTab).classList.add('active');
+        });
+      });
+      
+      // Card Game Logic - Drag and Drop
+      const cardsData = [
+        // Axe 1 - Personnalité (13 cartes)
+        { word: "Mes valeurs", definition: "Ce qui est important pour moi dans la vie : respect, liberté, famille, solidarité... Mes valeurs guident mes choix.", axis: 1 },
+        { word: "Mes émotions", definition: "Reconnaître ce que je ressens : joie, colère, tristesse, peur... et comprendre pourquoi je ressens cela.", axis: 1 },
+        { word: "Mes forces", definition: "Ce dans quoi je suis bon, ce qui me rend unique : créativité, écoute, persévérance, humour...", axis: 1 },
+        { word: "Mes limites", definition: "Ce qui est difficile pour moi, mes points de vigilance : patience, organisation, concentration...", axis: 1 },
+        { word: "Ma motivation", definition: "Comprendre ce qui me donne envie d'avancer, ce qui me pousse à agir, ce qui me fait tenir dans la durée.", axis: 1 },
+        { word: "Mes réactions", definition: "Comment je réagis face au stress, aux critiques, aux imprévus : je fuis, j'attaque, je me bloque...", axis: 1 },
+        { word: "Prendre une décision", definition: "Peser le pour et le contre, écouter mon intuition, assumer mon choix même s'il n'est pas parfait.", axis: 1 },
+        { word: "Mon identité", definition: "Qui je suis vraiment, au-delà des étiquettes : mes goûts, mes rêves, mes contradictions, mon histoire.", axis: 1 },
+        { word: "Gérer mes impulsions", definition: "Prendre le temps de réfléchir avant d'agir, ne pas réagir à chaud, maîtriser mes automatismes.", axis: 1 },
+        { word: "Mes besoins", definition: "Savoir ce dont j'ai vraiment besoin pour me sentir bien : sécurité, reconnaissance, autonomie...", axis: 1 },
+        { word: "Faire des choix", definition: "Accepter qu'on ne peut pas tout avoir, renoncer à certaines options pour en privilégier d'autres.", axis: 1 },
+        { word: "Me connaître", definition: "Prendre du recul sur mon parcours, mes réussites, mes échecs pour mieux comprendre qui je suis.", axis: 1 },
+        { word: "Donner du sens", definition: "Comprendre pourquoi je fais les choses, quel est mon but, ce qui rend mes actions importantes pour moi.", axis: 1 },
+        
+        // Axe 2 - Valorisation (13 cartes)
+        { word: "Me présenter", definition: "Parler de moi de façon claire et structurée : mon parcours, mes projets, ce que je recherche.", axis: 2 },
+        { word: "Mes réussites", definition: "Reconnaître ce que j'ai accompli, même les petites victoires : un diplôme, un projet fini, une relation préservée.", axis: 2 },
+        { word: "Parler en public", definition: "Prendre la parole devant un groupe, oser exprimer mon point de vue sans me sentir jugé.", axis: 2 },
+        { word: "Mon CV", definition: "Raconter mon parcours professionnel et mes compétences de façon valorisante et cohérente.", axis: 2 },
+        { word: "Dire non", definition: "Refuser une demande sans culpabiliser, poser mes limites, ne pas accepter tout pour faire plaisir.", axis: 2 },
+        { word: "Demander de l'aide", definition: "Reconnaître que j'ai besoin de soutien et oser le dire, sans avoir honte de ne pas savoir.", axis: 2 },
+        { word: "Exprimer un désaccord", definition: "Dire que je ne suis pas d'accord sans agressivité, argumenter calmement, respecter l'autre.", axis: 2 },
+        { word: "Mes compétences", definition: "Identifier ce que je sais faire grâce à mes expériences : organiser, écouter, réparer, animer...", axis: 2 },
+        { word: "Être écouté", definition: "Faire en sorte que mon message passe, adapter ma communication, vérifier qu'on m'a compris.", axis: 2 },
+        { word: "Confiance en moi", definition: "Croire en ma valeur, accepter mes imperfections, me sentir légitime d'être là et de parler.", axis: 2 },
+        { word: "Travailler en équipe", definition: "Collaborer avec d'autres, écouter les idées, partager les tâches, construire ensemble.", axis: 2 },
+        { word: "Valoriser mon parcours", definition: "Transformer mes expériences en atouts : mes jobs, mes voyages, mes engagements associatifs...", axis: 2 },
+        { word: "Être assertif", definition: "M'affirmer sans dominer ni me soumettre, exprimer mes besoins clairement et respectueusement.", axis: 2 },
+        
+        // Axe 3 - Bien-être (12 cartes)
+        { word: "Dormir suffisamment", definition: "Avoir un rythme de sommeil qui me permet de récupérer, même s'il n'est pas parfait.", axis: 3 },
+        { word: "Gérer mon stress", definition: "Reconnaître mes signaux d'alerte : tensions, fatigue, irritabilité... et utiliser des techniques d'apaisement.", axis: 3 },
+        { word: "Respirer calmement", definition: "Utiliser ma respiration pour me calmer dans les moments de stress ou d'angoisse.", axis: 3 },
+        { word: "Manger équilibré", definition: "Avoir une alimentation qui me nourrit correctement, sans forcément être parfaite.", axis: 3 },
+        { word: "Faire du sport", definition: "Bouger régulièrement pour évacuer les tensions et me sentir mieux dans mon corps.", axis: 3 },
+        { word: "Me détendre", definition: "Prendre du temps pour moi : musique, lecture, marche, jeux... ce qui me fait du bien.", axis: 3 },
+        { word: "Demander du soutien", definition: "Oser dire que ça ne va pas, appeler un ami, contacter un professionnel, ne pas rester seul.", axis: 3 },
+        { word: "Accepter l'échec", definition: "Ne pas me définir par mes erreurs, rebondir après une difficulté, apprendre de ce qui n'a pas marché.", axis: 3 },
+        { word: "Me sentir en sécurité", definition: "Avoir un endroit où je me sens bien, des personnes de confiance, des repères stables.", axis: 3 },
+        { word: "Traverser une crise", definition: "Tenir le coup dans les moments difficiles sans tout abandonner, avancer étape par étape.", axis: 3 },
+        { word: "Évacuer mes tensions", definition: "Trouver des exutoires sains : sport, art, discussion... pour ne pas exploser ou m'effondrer.", axis: 3 },
+        { word: "Prendre soin de moi", definition: "M'accorder de l'attention : hygiène, santé, plaisirs simples... je mérite d'être bien.", axis: 3 },
+        
+        // Axe 4 - Ressources (12 cartes)
+        { word: "Gérer mon budget", definition: "Savoir combien j'ai, combien je dépense, anticiper mes charges fixes, éviter les découverts.", axis: 4 },
+        { word: "Mes papiers administratifs", definition: "Avoir mes documents à jour : carte d'identité, CV, attestations... et savoir où les retrouver.", axis: 4 },
+        { word: "Prendre les transports", definition: "Me déplacer de façon autonome : connaître les horaires, planifier un trajet, gérer les imprévus.", axis: 4 },
+        { word: "Chercher un logement", definition: "Savoir où chercher, quels critères privilégier, comment monter un dossier de location.", axis: 4 },
+        { word: "Utiliser Internet", definition: "Naviguer en ligne, faire des recherches, utiliser les sites administratifs, envoyer des emails.", axis: 4 },
+        { word: "Mes droits sociaux", definition: "Connaître les aides auxquelles j'ai droit : RSA, APL, Prime d'activité, Pôle emploi...", axis: 4 },
+        { word: "Faire une démarche", definition: "Remplir un formulaire, envoyer un dossier, faire un suivi, relancer si besoin.", axis: 4 },
+        { word: "Économiser de l'argent", definition: "Mettre de côté quand c'est possible, prévoir les dépenses importantes, éviter les achats impulsifs.", axis: 4 },
+        { word: "Avoir un téléphone", definition: "Disposer d'un moyen de communication fiable pour être joignable et chercher des infos.", axis: 4 },
+        { word: "Payer mes factures", definition: "Anticiper mes échéances, prioriser les paiements essentiels, négocier des délais si nécessaire.", axis: 4 },
+        { word: "Me déplacer", definition: "Avoir une solution de mobilité : transports en commun, vélo, covoiturage, permis de conduire...", axis: 4 },
+        { word: "Demander une aide", definition: "Savoir vers qui me tourner quand j'ai besoin d'un soutien financier ou matériel : CAF, Mission Locale...", axis: 4 }
+      ];
+      
+      let score = 0;
+      let draggedCard = null;
+      
+      const cardsDeck = document.getElementById('cards-deck');
+      const scoreDisplay = document.getElementById('score');
+      const dropZones = document.querySelectorAll('.drop-zone');
+      const resetBtn = document.getElementById('reset-btn');
+      
+      // Initialiser le jeu
+      function initGame() {
+        score = 0;
+        scoreDisplay.textContent = score;
+        cardsDeck.innerHTML = '';
+        dropZones.forEach(zone => {
+          zone.querySelector('.dropped-cards').innerHTML = '';
+        });
+        
+        // Mélanger les cartes
+        const shuffled = [...cardsData].sort(() => Math.random() - 0.5);
+        
+        // Créer les cartes
+        shuffled.forEach((cardData, index) => {
+          const card = document.createElement('div');
+          card.className = 'game-card';
+          card.draggable = true;
+          card.dataset.axis = cardData.axis;
+          card.dataset.word = cardData.word;
+          card.dataset.definition = cardData.definition;
+          
+          card.style.cssText = `
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: move;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 120px;
+          `;
+          
+          card.innerHTML = `
+            <div style="font-size: 14px; font-weight: 700; color: #333; margin-bottom: 8px; text-align: center; font-family: 'Fredoka', sans-serif;">${cardData.word}</div>
+            <div class="card-definition" style="font-size: 12px; color: #666; line-height: 1.5; display: none; flex: 1;">${cardData.definition}</div>
+            <div class="card-hint" style="font-size: 11px; color: #999; text-align: center; margin-top: auto;">Clique pour voir la définition</div>
+          `;
+          
+          // Click pour voir la définition
+          card.addEventListener('click', function(e) {
+            if (!this.classList.contains('revealed')) {
+              const definition = this.querySelector('.card-definition');
+              const hint = this.querySelector('.card-hint');
+              definition.style.display = 'block';
+              hint.style.display = 'none';
+              this.classList.add('revealed');
+              this.style.borderColor = '#f39200';
+            }
+          });
+          
+          // Drag events
+          card.addEventListener('dragstart', function(e) {
+            draggedCard = this;
+            this.style.opacity = '0.5';
+          });
+          
+          card.addEventListener('dragend', function(e) {
+            this.style.opacity = '1';
+          });
+          
+          cardsDeck.appendChild(card);
+        });
+      }
+      
+      // Drop zones events
+      dropZones.forEach(zone => {
+        zone.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          this.style.borderStyle = 'solid';
+          this.style.transform = 'scale(1.02)';
+        });
+        
+        zone.addEventListener('dragleave', function(e) {
+          this.style.borderStyle = 'dashed';
+          this.style.transform = 'scale(1)';
+        });
+        
+        zone.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.style.borderStyle = 'dashed';
+          this.style.transform = 'scale(1)';
+          
+          if (draggedCard) {
+            const cardAxis = parseInt(draggedCard.dataset.axis);
+            const zoneAxis = parseInt(this.dataset.axis);
             
-            // Show selected page
-            const selectedPage = document.getElementById(pageId);
-            if (selectedPage) {
-                selectedPage.classList.add('active');
+            // Créer une version mini de la carte
+            const miniCard = document.createElement('div');
+            miniCard.style.cssText = `
+              background: white;
+              padding: 8px 12px;
+              border-radius: 8px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #333;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+              border-left: 4px solid;
+            `;
+            
+            if (cardAxis === zoneAxis) {
+              // Bonne réponse
+              miniCard.textContent = '✓ ' + draggedCard.dataset.word;
+              miniCard.style.borderLeftColor = '#4CAF50';
+              miniCard.style.background = 'rgba(76, 175, 80, 0.1)';
+              score++;
+              scoreDisplay.textContent = score;
+              
+              // Animation de succès
+              miniCard.style.animation = 'bounce 0.5s ease';
+              
+            } else {
+              // Mauvaise réponse
+              miniCard.textContent = '✗ ' + draggedCard.dataset.word;
+              miniCard.style.borderLeftColor = '#f44336';
+              miniCard.style.background = 'rgba(244, 67, 54, 0.1)';
             }
             
-            // Update nav buttons
-            const navButtons = document.querySelectorAll('.nav-tab');
-            navButtons.forEach(button => button.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        async function onConfigChange(config) {
-            // Update main title
-            const titleElement = document.getElementById('main-title');
-            if (titleElement) {
-                titleElement.textContent = config.main_title || defaultConfig.main_title;
+            this.querySelector('.dropped-cards').appendChild(miniCard);
+            draggedCard.remove();
+            
+            // Vérifier si le jeu est terminé
+            if (cardsDeck.children.length === 0) {
+              setTimeout(() => {
+                showEndMessage();
+              }, 500);
             }
-
-            // Update subtitle
-            const subtitleElement = document.getElementById('subtitle-text');
-            if (subtitleElement) {
-                subtitleElement.textContent = config.subtitle_text || defaultConfig.subtitle_text;
-            }
-
-            // Update organization text
-            const orgElement = document.getElementById('organization-text');
-            if (orgElement) {
-                const text = config.organization_text || defaultConfig.organization_text;
-                orgElement.innerHTML = text.replace(/\n/g, '<br>');
-            }
+          }
+        });
+      });
+      
+      // Message de fin
+      function showEndMessage() {
+        const percentage = (score / cardsData.length * 100).toFixed(0);
+        let message = '';
+        
+        if (percentage >= 80) {
+          message = '🎉 Excellent ! Tu maîtrises très bien les 4 axes Life Skills !';
+        } else if (percentage >= 60) {
+          message = '👏 Bravo ! Tu as une bonne compréhension des Life Skills !';
+        } else if (percentage >= 40) {
+          message = '💪 Pas mal ! Continue à t\'entraîner pour mieux connaître les axes !';
+        } else {
+          message = '🔄 C\'est un bon début ! Recommence pour mieux découvrir les compétences !';
         }
-
-        // Initialize Element SDK if available
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig: defaultConfig,
-                onConfigChange: onConfigChange,
-                mapToCapabilities: (config) => ({
-                    recolorables: [],
-                    borderables: [],
-                    fontEditable: undefined,
-                    fontSizeable: undefined
-                }),
-                mapToEditPanelValues: (config) => new Map([
-                    ["main_title", config.main_title || defaultConfig.main_title],
-                    ["subtitle_text", config.subtitle_text || defaultConfig.subtitle_text],
-                    ["organization_text", config.organization_text || defaultConfig.organization_text]
-                ])
-            });
+        
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          animation: fadeIn 0.3s ease;
+        `;
+        
+        overlay.innerHTML = `
+          <div style="background: white; padding: 48px; border-radius: 24px; text-align: center; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+            <h3 style="font-size: 32px; font-family: 'Fredoka', sans-serif; color: #f39200; margin-bottom: 20px;">Jeu terminé !</h3>
+            <p style="font-size: 24px; font-weight: 700; color: #333; margin-bottom: 16px;">Score : ${score} / ${cardsData.length}</p>
+            <p style="font-size: 18px; color: #555; margin-bottom: 32px;">${message}</p>
+            <button id="close-overlay" style="background: linear-gradient(135deg, #f39200 0%, #FF9F1C 100%); color: white; border: none; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; font-family: 'Fredoka', sans-serif; box-shadow: 0 4px 15px rgba(243, 146, 0, 0.3);">
+              🔄 Rejouer
+            </button>
+          </div>
+        `;
+        
+        document.body.appendChild(overlay);
+        
+        document.getElementById('close-overlay').addEventListener('click', function() {
+          overlay.remove();
+          initGame();
+        });
+      }
+      
+      // Reset button
+      resetBtn.addEventListener('click', function() {
+        initGame();
+      });
+      
+      // Ajouter l'animation bounce
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0cda54a09ddf1e',t:'MTc2MzUyNTM3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      `;
+      document.head.appendChild(style);
+      
+      // Initialiser le jeu au chargement
+      initGame();
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a846fc643bb3cab',t:'MTc2NDc3OTMwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
